@@ -1,0 +1,126 @@
+.baybayin-phrasebook-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 50px auto;
+    padding: 20px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.baybayin-phrasebook-container h4 {
+    text-align: start;
+}
+
+.halimbawa-ng-pagsalin-section {
+    display: flex;
+    border-radius: 10px;
+    background-color: #000000;
+    padding: 10px 50px 0px 50px;
+    width: 100%;
+    max-width: 1200px;
+    box-sizing: border-box;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 auto;
+}
+
+.halimbawa-ng-pagsalin-section img {
+    width: 315px;
+    height: auto;
+    object-fit: contain;
+}
+
+.halimbawa-ng-pagsalin-section p {
+    font-weight: 700;
+    font-size: 24px;
+    color: #FFFFFF;
+}
+
+.mga-kategorya-container {
+    display: flex;
+    align-items: start;
+    width: 100%; /* Takes up full width */
+    max-width: 1200px; /* Same max width as the content */
+    margin: 20px 0; /* Add margin between title and grid */
+}
+
+.mga-kategorya {
+    margin: 0; /* Remove any default margin */
+    font-weight: 600;
+    text-align: start;
+    width: 100%;
+}
+
+.phrasebook-categories-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); /* Ensure responsive grid */
+    gap: 20px;
+    width: 100%;
+    max-width: 1200px;
+    justify-items: center;
+    margin: 0 auto;
+}
+
+.phrasebook-category-card {
+    background-color: #000000;
+    border: 15px solid #FCC900;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    width: 220px;
+    height: 220px;
+    box-sizing: border-box;
+    text-align: center;
+    color: white;
+}
+
+.phrasebook-category-image img {
+    width: 75px;
+    height: 75px;
+    margin-top: 5px;
+    margin-left: 0;
+}
+
+.phrasebook-category-card-link {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    text-decoration: none; /* Removes the underline */
+    color: inherit; /* Ensures it inherits the color from the parent element */
+}
+
+.phrasebook-category-card-link:visited,
+.phrasebook-category-card-link:active {
+    text-decoration: none; /* Also remove underline when the link has been visited or is active */
+    color: inherit; /* Keep the color consistent */
+}
+
+.phrasebook-category-card-link h3 {
+    font-size: 22px;
+    font-weight: 700;
+    text-decoration: none; /* Ensure the heading inside the link has no underline */
+}
+
+@media (max-width: 768px) {
+    .phrasebook-categories-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .halimbawa-ng-pagsalin-section {
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .phrasebook-categories-grid {
+        grid-template-columns: 1fr;
+    }
+}

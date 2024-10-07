@@ -1,0 +1,111 @@
+@font-face {
+    font-family: 'BaybayinNeue';
+    src: url('../../../assets/fonts/BaybayinNeue.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+.baybayin-guide-container {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    margin: 50px auto;
+    padding: 0px 20px;
+}
+
+.categories-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* 2 cards per row */
+    gap: 20px;
+    width: 100%; /* Ensure the grid takes full width */
+    max-width: 1200px; /* Optional: Set a max width */
+}
+
+.category-card {
+    display: flex;
+    flex-direction: column; /* Allow the image and text to stack vertically */
+    background-color: #000000;
+    padding: 15px 30px;
+    border-radius: 15px;
+    align-items: center;
+    justify-content: center;
+    min-height: 250px; /* Set minimum height for all cards */
+    height: 100%; /* Let the card fill available height */
+}
+
+.category-card-text {
+    display: flex;
+    flex-direction: column;
+    color: #ffffff;
+}
+
+.text-details {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    text-align: left;
+    margin-bottom: 20px;
+}
+
+.text-details p {
+    font-size: 36px;
+    line-height: 1;
+}
+
+.text-details h4 {
+    font-weight: 600;
+}
+
+.category-text {
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 1.2;
+    text-align: start;
+}
+
+.baybayin-text {
+    font-family: 'BaybayinNeue';
+    color: #FCC900;
+    font-size: 18px;
+    line-height: 1.2;
+    margin-bottom: 5px;
+    text-align: start;
+}
+
+/* Center the image */
+.category-image {
+    display: flex;
+    justify-content: center; /* Horizontally center the image */
+    align-items: center; /* Vertically center the image */
+}
+
+.category-image img {
+    width: 150px;
+    height: auto;
+    object-fit: contain;
+    margin-left: 20px; /* Optional, remove if you don't want extra space */
+}
+
+/* Adjust the width of the last image */
+.category-card:last-child .category-image img {
+    width: 200px; /* Different width for the last image */
+}
+
+.category-card-link {
+    text-decoration: none;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    align-items: center;
+}
+
+@media (max-width: 768px) {
+    .categories-grid {
+        grid-template-columns: 1fr; /* Stack the cards vertically on smaller screens */
+    }
+
+    .category-card {
+        flex-direction: column;
+        text-align: center;
+    }
+}

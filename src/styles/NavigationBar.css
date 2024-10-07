@@ -1,0 +1,214 @@
+@font-face {
+  font-family: 'Deutsch';
+  src: url('../assets/fonts/Deutsch.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 20px;
+  background-color: #000000;
+  border-bottom: 1px solid #ccc;
+  position: relative;
+  padding-left: 150px;
+  padding-right: 150px;
+}
+
+.logo-and-title {
+  display: flex;
+  align-items: center;
+}
+
+.logo-container img {
+  width: 50px;
+  height: auto;
+}
+
+.title-container h2 {
+  margin-top: 10px;
+  margin-left: 10px;
+  font-family: 'Deutsch', sans-serif;
+  color: #FCC900;
+}
+
+.menu-item-with-submenu > .menu-link {
+  font-weight: 600;
+  color: #FFFFFF; /* Set the specific color for Baybayin Tools */
+}
+
+.menu-item-with-submenu > .menu-link:hover {
+  color: #FCC900; /* Change color on hover if needed */
+}
+
+.menu-options {
+  display: flex;
+  flex-direction: column; /* Change for mobile */
+  gap: 20px;
+}
+
+.menu-options a {
+  font-weight: 600;
+  text-decoration: none;
+  color: #FFFFFF;
+}
+
+.menu-options a:hover,
+.menu-options a:focus,
+.menu-options a:active {
+  color: #FCC900;
+}
+
+.menu-item-with-submenu {
+  position: relative;
+}
+
+.submenu-list {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  background-color: #000000;
+  display: none;
+}
+
+.menu-item-with-submenu.open .submenu-list {
+  display: flex;
+  flex-direction: column;
+  padding-left: 20px;
+}
+
+.submenu-list li {
+  margin-bottom: 5px;
+  padding-bottom: 5px; /* Add padding to give space for the line */
+  border-bottom: 1px solid #555; /* Add a line below each item */
+}
+
+.submenu-list li:last-child {
+  border-bottom: none; /* Remove the line from the last item */
+}
+
+.submenu-list li a {
+  text-decoration: none;
+  color: #FFFFFF;
+  display: block;
+  padding: 10px 0; /* Add padding for better spacing */
+}
+
+.submenu-list li a:hover {
+  color: #FCC900;
+  background-color: #222; /* Optional: Add a hover effect */
+}
+
+/* Mobile Menu */
+.menu-toggle {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 24px;
+  color: white;
+}
+
+.close-menu {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 24px;
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  color: white;
+}
+
+/* For Mobile */
+@media (max-width: 768px) {
+  .menu-options {
+    position: fixed;
+    top: 0;
+    right: 0;
+    height: 100vh;
+    width: 250px;
+    background-color: #000000;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 10px;
+    transform: translateX(100%);
+    transition: transform 0.3s ease;
+    padding-top: 20px;
+    padding-left: 30px;
+    padding-right: 30px;
+  }
+
+  .menu-options.open {
+    transform: translateX(0);
+  }
+
+  .submenu-list {
+    display: none;
+  }
+
+  .menu-item-with-submenu.open .submenu-list {
+    display: block;
+    padding-left: 20px; /* Ensure it appears nested under Baybayin Tools */
+  }
+
+  .menu-toggle {
+    display: block;
+  }
+
+  .close-menu {
+    display: block;
+  }
+
+  /* Remove padding for mobile screens */
+  .navbar {
+    padding-left: 30px;
+    padding-right: 30px;
+  }
+
+  /* Adjust submenu appearance for mobile */
+  .submenu-list {
+    background-color: #333;
+    width: 100%;
+    padding: 0;
+  }
+}
+
+/* For Desktop */
+@media (min-width: 769px) {
+  .menu-options {
+    flex-direction: row; /* Ensure desktop has items in a row */
+    position: static;
+    transform: none;
+    height: auto;
+  }
+
+  .submenu-toggle {
+    display: none;
+  }
+
+  .submenu-list {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    display: none;
+    z-index: 100;
+    width: 150px;
+    background-color: #000000;
+    list-style: none;
+    padding-right: 15px;
+  }
+
+  .menu-item-with-submenu:hover .submenu-list {
+    display: block;
+  }
+
+  .menu-toggle,
+  .close-menu {
+    display: none;
+  }
+}

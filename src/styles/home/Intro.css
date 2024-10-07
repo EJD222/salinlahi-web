@@ -1,0 +1,74 @@
+/* Main container */
+.intro-section {
+    background-color: #FCC900;
+    padding: 100px;
+    margin-top: 50px; 
+}
+
+/* Welcome text styling */
+.welcome-text {
+    display: flex;
+    flex-direction: column;
+    align-items: start; /* Align text and button to the left on desktop */
+    text-align: left;
+}
+
+.welcome-text h2 {
+    color: #FFFFFF;
+    margin-bottom: -5px; /* Space between h3 and h1 */
+}
+
+.welcome-text h1 {
+    color: #FFFFFF;
+    font-weight: 600;
+    margin-bottom: 10px; /* Space between h1 and the paragraph */
+}
+
+.welcome-text p {
+    margin-bottom: 10px; /* Space between paragraph and the download buttons */
+}
+
+/* Styling for the button */
+.download-button {
+    background-color: #000000;
+    color: #FCC900;
+    border: none;
+    padding: 10px 25px;
+    margin-top: 5px;
+    cursor: pointer;
+    border-radius: 30px;
+    font-size: 16px;
+    font-weight: 700;
+    transition: background-color 0.3s ease;
+}
+
+.download-button:hover {
+    background-color: #FFFFFF;
+}
+
+/* Mascot Image Styling */
+.salinlahi-mascot {
+    width: 315px;
+    height: 380px;
+}
+
+/* Mobile and smaller screen adjustments */
+@media (max-width: 768px) {
+    .welcome-text { 
+      align-items: center; /* Center align text and button on mobile */
+      text-align: center; /* Center the text itself */
+    }
+
+    /* Make the button more responsive */
+    .download-button {
+      width: 100%;
+      max-width: 300px;
+    }
+
+    /* Ensure the mascot image is centered */
+    .salinlahi-mascot {
+      margin: 20px auto;
+      width: 250px;
+      height: auto;
+    }
+}
