@@ -17,7 +17,7 @@ function Intro() {
               It also highlights our mission to translate the Baybayin, as <b>"salin"</b> means <b>"to translate."</b>
             </p>
             <button className="download-button">
-              <GetAppIcon style={{ marginRight: '8px' }} /> {/* Material UI Download Icon */}
+              <GetAppIcon style={{ marginRight: '5px' }} /> {/* Material UI Download Icon */}
               Download the Salinlahi App
             </button>
           </div>

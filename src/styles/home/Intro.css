@@ -1,8 +1,9 @@
 /* Main container */
 .intro-section {
     background-color: #FCC900;
-    padding: 100px;
-    margin-top: 50px; 
+    padding: 50px;
+    margin-top: 50px;
+    border-radius: 10px;
 }
 
 /* Welcome text styling */
@@ -62,7 +63,7 @@
     /* Make the button more responsive */
     .download-button {
       width: 100%;
-      max-width: 300px;
+      max-width: 350px;
     }
 
     /* Ensure the mascot image is centered */

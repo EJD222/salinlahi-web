@@ -105,8 +105,10 @@
 .phrasebook-category-card-link h3 {
     font-size: 22px;
     font-weight: 700;
-    text-decoration: none; /* Ensure the heading inside the link has no underline */
+    text-decoration: none; /* Ensure no underline */
+    color: #FFFFFF; /* Set category title to white */
 }
+
 
 @media (max-width: 768px) {
     .phrasebook-categories-grid {
