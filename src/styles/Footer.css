@@ -1,0 +1,105 @@
+.footer-container {
+    background-color: #000000;
+    color: #ffffff;
+    padding: 35px 35px 20px 35px; /* Add top padding */
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+}
+
+.footer-inner {
+  max-width: 1200px; /* Limit width for better alignment */
+  width: 100%;
+}
+
+.footer-columns {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 20px;
+  align-items: flex-start;
+}
+
+.footer-column {
+  flex: 1;
+  min-width: 150px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; /* Align text to the left within columns */
+}
+
+.footer-logo {
+  width: 60px;
+  height: auto;
+  margin-bottom: 10px;
+}
+
+h3 {
+    color: #FCC900;
+    font-size: 16px;
+    font-weight: 700; /* Set to bold */
+    margin-bottom: 8px;
+}
+
+.footer-text,
+.footer-column p {
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: normal;
+  text-align: left; /* Ensure text within columns is left-aligned */
+}
+
+.download-text {
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: normal;
+  margin-top: 5px;
+}
+
+.social-icons {
+  display: flex;
+  gap: 15px;
+  margin-top: 10px;
+}
+
+.social-icon {
+  color: #FCC900;
+  font-size: 18px;
+  transition: color 0.3s ease;
+}
+
+.social-icon:hover {
+  color: #ffffff;
+}
+
+.footer-copyright {
+  color: #ffffff;
+  font-size: 12px;
+  padding-top: 15px;
+  border-top: 1px solid #333;
+  margin-top: 10px;
+}
+
+.salinlahi {
+  color: #FCC900;
+  font-weight: bold;
+}
+
+.project-link {
+  color: #FCC900;
+  text-decoration: underline;
+}
+
+@font-face {
+    font-family: 'Deutsch';
+    src: url('../assets/fonts/Deutsch.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+  }
+  
+.logo-name {
+    font-family: 'Deutsch';
+    color: #FCC900;
+    letter-spacing: 0.25px;
+}
