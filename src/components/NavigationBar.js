@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
+import { Link, useLocation } from 'react-router-dom';
 import SalinlahiLogo from '../assets/images/logo/salinlahi_logo_1.png';
-import { Link } from 'react-router-dom';
 import '../styles/NavigationBar.css';
 import ReorderIcon from '@mui/icons-material/Reorder';
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
@@ -10,34 +10,34 @@ function NavigationBar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isSubmenuOpen, setIsSubmenuOpen] = useState(false);
   const menuRef = useRef(null);
+  const location = useLocation();
 
-  // Toggle main menu visibility for mobile
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
-    setIsSubmenuOpen(false); // Close the submenu when toggling the main menu
+    setIsSubmenuOpen(false);
   };
 
-  // Toggle submenu visibility (only for mobile)
   const toggleSubmenu = (e) => {
     e.preventDefault();
     setIsSubmenuOpen(!isSubmenuOpen);
   };
 
-  // Close the dropdown if clicked outside of it
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (menuRef.current && !menuRef.current.contains(event.target)) {
-        setIsSubmenuOpen(false); // Close the submenu
-        setIsMenuOpen(false); // Close the main menu
+        setIsSubmenuOpen(false);
+        setIsMenuOpen(false);
       }
     };
 
     document.addEventListener('mousedown', handleClickOutside);
-
     return () => {
       document.removeEventListener('mousedown', handleClickOutside);
     };
   }, []);
+
+  // Check if the current path starts with '/baybayin-tools'
+  const isBaybayinToolsActive = location.pathname.startsWith('/baybayin-tools');
 
   return (
     <div className="navbar">
@@ -58,11 +58,13 @@ function NavigationBar() {
           <CloseIcon />
         </button>
 
-        <Link to="/" onClick={toggleMenu}>Home</Link>
+        <Link to="/" onClick={toggleMenu} className={location.pathname === '/' ? 'active-link' : ''}>
+          Home
+        </Link>
 
         {/* Baybayin Tools with Dropdown List */}
         <div className={`menu-item-with-submenu ${isSubmenuOpen ? 'open' : ''}`}>
-          <span className="menu-link" onClick={toggleSubmenu}>
+          <span className={`menu-link ${isBaybayinToolsActive ? 'active-link' : ''}`} onClick={toggleSubmenu}>
             Baybayin Tools
             <ArrowDropDownIcon className="submenu-toggle" />
           </span>
@@ -70,15 +72,31 @@ function NavigationBar() {
           {/* Submenu List */}
           {isSubmenuOpen && (
             <ul className="submenu-list">
-              <li><Link to="/baybayin-tools/baybayin-guide" onClick={toggleMenu}>Baybayin Guide</Link></li>
-              <li><Link to="/baybayin-tools/baybayin-phrasebook" onClick={toggleMenu}>Baybayin Phrasebook</Link></li>
-              <li><Link to="/baybayin-tools/baybayin-characters" onClick={toggleMenu}>Characters</Link></li>
+              <li>
+                <Link to="/baybayin-tools/baybayin-guide" onClick={toggleMenu} className={location.pathname === '/baybayin-tools/baybayin-guide' ? 'active-link' : ''}>
+                  Baybayin Guide
+                </Link>
+              </li>
+              <li>
+                <Link to="/baybayin-tools/baybayin-phrasebook" onClick={toggleMenu} className={location.pathname === '/baybayin-tools/baybayin-phrasebook' ? 'active-link' : ''}>
+                  Baybayin Phrasebook
+                </Link>
+              </li>
+              <li>
+                <Link to="/baybayin-tools/baybayin-characters" onClick={toggleMenu} className={location.pathname === '/baybayin-tools/baybayin-characters' ? 'active-link' : ''}>
+                  Baybayin Characters
+                </Link>
+              </li>
             </ul>
           )}
         </div>
 
-        <Link to="/about" onClick={toggleMenu}>About</Link>
-        <Link to="/contact" onClick={toggleMenu}>Contact</Link>
+        <Link to="/about" onClick={toggleMenu} className={location.pathname === '/about' ? 'active-link' : ''}>
+          About
+        </Link>
+        <Link to="/contact" onClick={toggleMenu} className={location.pathname === '/contact' ? 'active-link' : ''}>
+          Contact
+        </Link>
       </div>
 
       {/* Menu Toggle Button for Mobile */}
