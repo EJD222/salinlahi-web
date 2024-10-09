@@ -8,30 +8,37 @@
 .baybayin-guide-container {
     display: flex;
     flex-direction: column;
-    align-items: start;
+    align-items: flex-start; /* Align items to the left */
     margin: 50px auto;
     padding: 0px 20px;
+    max-width: 1200px; /* Set a maximum width for central alignment */
+}
+
+.text-details {
+    text-align: left; /* Align the heading text to the left */
+    width: 100%; /* Make it span the full width of the container */
+    margin-bottom: 20px;
 }
 
 .categories-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr); /* 2 cards per row */
     gap: 20px;
-    width: 100%; /* Ensure the grid takes full width */
-    max-width: 1200px; /* Optional: Set a max width */
+    width: 100%; /* Ensure the grid takes the full width */
 }
 
 .category-card {
     display: flex;
-    flex-direction: column; /* Allow the image and text to stack vertically */
+    flex-direction: column;
     background-color: #000000;
     padding: 15px 30px;
-    border-radius: 15px;
-    align-items: center;
+    border-radius: 10px;
+    align-items: start; /* Left-align the contents inside each card */
     justify-content: center;
-    min-height: 250px; /* Set minimum height for all cards */
-    height: 100%; /* Let the card fill available height */
+    min-height: 250px;
+    height: 100%;
 }
+
 
 .category-card-text {
     display: flex;

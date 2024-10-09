@@ -1,0 +1,40 @@
+/* Thumbnail Styles */
+.responsive-thumbnail {
+    width: 80%; /* Default width for larger screens */
+    height: auto;
+    max-width: 500px; /* Limit the max width for desktop */
+    border-radius: 8px;
+    object-fit: cover;
+}
+
+/* Mobile styles */
+@media (max-width: 768px) {
+    .responsive-thumbnail {
+        width: 100%; /* Full width for mobile */
+    }
+}
+
+/* Modal styling */
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.8);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+
+.modal-content {
+    background-color: #ffffff;
+    border-radius: 8px;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    max-width: 90%;
+    max-height: 90vh;
+}

@@ -1,9 +1,17 @@
 .lesson-list-container {
     display: flex;
     flex-direction: column;
-    align-items: start;
+    align-items: center; /* Centers the entire container horizontally */
     margin: 50px auto;
     padding: 0px 20px;
+    max-width: 1200px; /* Limit maximum width */
+    width: 100%;
+}
+
+.lesson-header,
+.lesson-list,
+.mga-aralin {
+    width: 100%; /* Full width within limited container */
 }
 
 .lesson-header {
@@ -12,6 +20,7 @@
     align-items: center;
     padding: 50px;
     border-radius: 15px;
+    box-sizing: border-box;
 }
 
 .lesson-header img {
@@ -42,13 +51,13 @@
 .mga-aralin {
     margin-top: 30px;
     font-weight: 600;
+    text-align: left; /* Aligns "Mga Aralin" to the left */
 }
 
 .lesson-list {
     display: flex;
     flex-direction: column;
-
-    width: 100%; /* Ensure lessons take up full width */
+    width: 100%;
 }
 
 .lesson-item {
@@ -56,37 +65,36 @@
     align-items: center;
     padding: 15px;
     border-radius: 10px;
+    margin-bottom: -5px;
 }
 
 .lesson-number {
     background-color: #000000;
     color: #FCC900;
     padding: 10px;
-    width: 60px; /* Fixed width for the lesson number */
+    width: 60px;
     text-align: center;
     border-radius: 5px;
 }
 
 .lesson-title {
-    flex-grow: 1; /* Take remaining space */
-    padding-left: 15px; /* Add space between number and title */
-    color: #FFFFFF; /* Set color for lesson title */
+    flex-grow: 1;
+    padding-left: 15px;
+    color: #FFFFFF;
     font-weight: 600;
     text-align: left;
-    background-color: #000000; /* White background for title */
-    padding: 15px; /* Padding for the title */
-    border-radius: 5px; /* Rounded corners for the title box */
+    background-color: #000000;
+    padding: 15px;
+    border-radius: 5px;
     margin-left: 30px;
     font-size: 18px;
 }
 
-/* Remove blue color and underline from the link */
 .lesson-title a {
-    color: inherit; /* Inherit color from .lesson-title */
-    text-decoration: none; /* Remove underline */
+    color: inherit;
+    text-decoration: none;
 }
 
-/* Responsive adjustments */
 @media (max-width: 768px) {
     .lesson-header {
         flex-direction: column;

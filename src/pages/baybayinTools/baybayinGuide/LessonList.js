@@ -20,11 +20,9 @@ function LessonList() {
       <div className="lesson-list">
         {lessons.map((lesson) => (
           <div key={lesson.lessonNumber} className="lesson-item">
-            {/* Lesson number in its own container */}
             <div className="lesson-number">
               {lesson.lessonNumber}
             </div>
-            {/* Lesson title in the remaining space */}
             <div className="lesson-title">
               <Link to={lesson.route}>{lesson.lessonTitle}</Link>
             </div>
