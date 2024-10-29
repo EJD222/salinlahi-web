@@ -1,4 +1,8 @@
-/* Main container */
+.intro-container {
+    padding: 0px 40px;
+    margin: 50px auto 0px auto;
+}
+
 .intro-section {
     background-color: #FCC900;
     padding: 50px;

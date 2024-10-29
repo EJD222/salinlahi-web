@@ -1,4 +1,3 @@
-// PanutuntunanNgBaybayin.js
 import React, { useContext, useEffect } from 'react';
 import LessonContext from '../LessonContext';
 import LessonContentTemplate from '../LessonContentTemplate';

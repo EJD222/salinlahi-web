@@ -5,27 +5,30 @@ import GetAppIcon from '@mui/icons-material/GetApp'; // Import Material UI Downl
 
 function Intro() {
   return (
-    <div className="container text-center intro-section">
-      <div className="row">
-        {/* Text Section */}
-        <div className="col-lg-6 col-md-6 d-flex align-items-start justify-content-center welcome-text">
-          <div>
-            <h2>Magandang araw!</h2>
-            <h1>Welcome to Salinlahi!</h1>
-            <p>
-              <b>"Salinlahi"</b> signifies our dedication to preserving and passing on the ancient Baybayin script, rooted in the Tagalog term for "generation." 
-              It also highlights our mission to translate the Baybayin, as <b>"salin"</b> means <b>"to translate."</b>
-            </p>
-            <button className="download-button">
-              <GetAppIcon style={{ marginRight: '5px' }} /> {/* Material UI Download Icon */}
-              Download the Salinlahi App
-            </button>
+    <div className="intro-container">
+      <div className="container text-center intro-section">
+        <div className="row">
+          {/* Text Section */}
+          <div className="col-lg-6 col-md-6 d-flex align-items-start justify-content-center welcome-text">
+            <div>
+              <h2>Magandang araw!</h2>
+              <h1>Welcome to Salinlahi!</h1>
+              <p>
+                Experience the beauty of Baybayin at your fingertips. 
+                <b> Download the Salinlahi App now </b>and start your journey in preserving 
+                and learning this ancient script of the Philippines!
+              </p>*
+              <button className="download-button">
+                <GetAppIcon style={{ marginRight: '5px' }} /> {/* Material UI Download Icon */}
+                Download the Salinlahi App
+              </button>
+            </div>
           </div>
-        </div>
 
-        {/* Mascot Image */}
-        <div className="col-lg-6 col-md-6 d-flex justify-content-center justify-content-lg-end">
-          <img src={SaLinlahiMascot} alt="Salinlahi Mascot" className="salinlahi-mascot" />
+          {/* Mascot Image */}
+          <div className="col-lg-6 col-md-6 d-flex justify-content-center justify-content-lg-end">
+            <img src={SaLinlahiMascot} alt="Salinlahi Mascot" className="salinlahi-mascot" />
+          </div>
         </div>
       </div>
     </div>

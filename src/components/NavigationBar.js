@@ -36,7 +36,7 @@ function NavigationBar() {
     };
   }, []);
 
-  // Check if the current path starts with '/baybayin-tools'
+  // Check if the current path matches any sub-route under /baybayin-tools
   const isBaybayinToolsActive = location.pathname.startsWith('/baybayin-tools');
 
   return (
@@ -63,8 +63,8 @@ function NavigationBar() {
         </Link>
 
         {/* Baybayin Tools with Dropdown List */}
-        <div className={`menu-item-with-submenu ${isSubmenuOpen ? 'open' : ''}`}>
-          <span className={`menu-link ${isBaybayinToolsActive ? 'active-link' : ''}`} onClick={toggleSubmenu}>
+        <div className={`menu-item-with-submenu ${isSubmenuOpen ? 'open' : ''} ${isBaybayinToolsActive ? 'current-menu-parent' : ''}`}>
+          <span className="menu-link" onClick={toggleSubmenu}>
             Baybayin Tools
             <ArrowDropDownIcon className="submenu-toggle" />
           </span>
@@ -85,6 +85,11 @@ function NavigationBar() {
               <li>
                 <Link to="/baybayin-tools/baybayin-characters" onClick={toggleMenu} className={location.pathname === '/baybayin-tools/baybayin-characters' ? 'active-link' : ''}>
                   Baybayin Characters
+                </Link>
+              </li>
+              <li>
+                <Link to="/baybayin-tools/baybayin-transliterator" onClick={toggleMenu} className={location.pathname === '/baybayin-tools/baybayin-transliterator' ? 'active-link' : ''}>
+                  Baybayin Transliterator
                 </Link>
               </li>
             </ul>

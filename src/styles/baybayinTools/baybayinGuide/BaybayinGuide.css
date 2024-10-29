@@ -8,23 +8,26 @@
 .baybayin-guide-container {
     display: flex;
     flex-direction: column;
-    align-items: flex-start; /* Align items to the left */
-    margin: 50px auto;
-    padding: 0px 20px;
-    max-width: 1200px; /* Set a maximum width for central alignment */
+    align-items: center; /* Center-aligns the container */
+    margin: 50px auto 10px;
+    padding: 0px 40px;
+    max-width: 1200px;
+    width: 100%; /* Ensure it takes up full width of the page */
 }
 
 .text-details {
-    text-align: left; /* Align the heading text to the left */
-    width: 100%; /* Make it span the full width of the container */
+    text-align: left;
+    width: 100%; /* Matches the width of categories-grid */
     margin-bottom: 20px;
+    max-width: 1200px; /* Optional: Same max-width as categories-grid if required */
 }
 
 .categories-grid {
     display: grid;
-    grid-template-columns: repeat(2, 1fr); /* 2 cards per row */
+    grid-template-columns: repeat(2, 1fr);
     gap: 20px;
-    width: 100%; /* Ensure the grid takes the full width */
+    width: 100%;
+    max-width: 1200px; /* Limit grid width to match the desired width */
 }
 
 .category-card {
@@ -33,12 +36,11 @@
     background-color: #000000;
     padding: 15px 30px;
     border-radius: 10px;
-    align-items: start; /* Left-align the contents inside each card */
+    align-items: start; 
     justify-content: center;
     min-height: 250px;
     height: 100%;
 }
-
 
 .category-card-text {
     display: flex;
@@ -79,23 +81,21 @@
     text-align: start;
 }
 
-/* Center the image */
 .category-image {
     display: flex;
-    justify-content: center; /* Horizontally center the image */
-    align-items: center; /* Vertically center the image */
+    justify-content: center; 
+    align-items: center; 
 }
 
 .category-image img {
     width: 150px;
     height: auto;
     object-fit: contain;
-    margin-left: 20px; /* Optional, remove if you don't want extra space */
+    margin-left: 20px; 
 }
 
-/* Adjust the width of the last image */
 .category-card:last-child .category-image img {
-    width: 200px; /* Different width for the last image */
+    width: 200px; 
 }
 
 .category-card-link {
@@ -108,11 +108,33 @@
 
 @media (max-width: 768px) {
     .categories-grid {
-        grid-template-columns: 1fr; /* Stack the cards vertically on smaller screens */
+        grid-template-columns: 1fr; 
     }
 
     .category-card {
         flex-direction: column;
         text-align: center;
+    }
+}
+
+@media (max-width: 470px) {
+    .category-card {
+        width: calc(100% - 20px); /* Full width with space on both sides */
+
+        margin: 0 auto 10px; /* Center align with vertical spacing */
+        padding: 20px; /* Adjust padding */
+        min-height: 200px; /* Reduce minimum height */
+    }
+
+    .category-text {
+        font-size: 16px; /* Smaller text size */
+    }
+
+    .baybayin-text {
+        font-size: 14px; /* Smaller Baybayin text */
+    }
+
+    .category-image img {
+        width: 90px; /* Further reduce image size for small screens */
     }
 }

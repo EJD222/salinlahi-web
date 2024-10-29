@@ -16,7 +16,7 @@ function BaybayinPhrasebook() {
     <div className="baybayin-phrasebook-container">
       <div className="halimbawa-ng-pagsalin-section">
         <p>Mga halimbawa ng pagsalin sa Baybayin.</p>
-        <img src={ChildStepping} alt="Salinlahi Mascot" className="salinlahi-mascot" />
+        <img src={ChildStepping} alt="child-stepping" className="child-stepping" />
       </div>
       <div className='mga-kategorya-container'>
         <h4 className='mga-kategorya'>Mga Kategorya</h4>

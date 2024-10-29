@@ -1,8 +1,8 @@
 import React from 'react';
 import '../../styles/home/Features.css';
-import BaybayinIcon from '../../assets/images/logo/salinlahi_mascot.png'; // Replace with actual path
-import ToolsIcon from '../../assets/images/logo/salinlahi_mascot.png'; // Replace with actual path
-import CultureIcon from '../../assets/images/logo/salinlahi_mascot.png'; // Replace with actual path
+import BaybayinIcon from '../../assets/images/logo/salinlahi_mascot.png'; 
+import ToolsIcon from '../../assets/images/logo/salinlahi_mascot.png'; 
+import CultureIcon from '../../assets/images/logo/salinlahi_mascot.png';
 
 function Features() {
   return (
@@ -13,7 +13,7 @@ function Features() {
         <div className="col-md-4 text-center feature">
           <img src={BaybayinIcon} alt="Baybayin Learning" className="feature-icon" />
           <h3>Learn Baybayin</h3>
-          <p>Master the ancient Filipino script, Baybayin, with step-by-step lessons and practice exercises.</p>
+          <p>Master the ancient Filipino script, Baybayin, with step-by-step lessons and tools.</p>
         </div>
 
         {/* Interactive Tools Feature */}

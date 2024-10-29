@@ -1,6 +1,6 @@
 import React from 'react';
 import Features from './Features';
-import Intro from './Intro'; // Import the new Intro component
+import Intro from './Intro'; 
 
 function Home() {
   return (

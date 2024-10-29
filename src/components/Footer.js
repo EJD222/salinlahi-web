@@ -20,9 +20,9 @@ const Footer = () => {
           {/* About & Contact Column */}
           <div className="footer-column">
             <h3>About</h3>
-            <p>Salinlahi is a project dedicated to preserving cultural heritage and history.</p>
+            <p>Salinlahi is a project dedicated to bringing Baybayin closer to Filipinos.</p>
             <h3>Contact</h3>
-            <p>Email: info@salinlahi.com</p>
+            <p>Email: awangan.baybayin@gmail.com</p>
           </div>
 
           {/* Download App Column */}
@@ -41,7 +41,7 @@ const Footer = () => {
               <a href="https://www.instagram.com/awanggan2020/" className="social-icon" aria-label="Instagram">
                 <InstagramIcon fontSize="small" />
               </a>
-              <a href="mailto:info@salinlahi.com" className="social-icon" aria-label="Email">
+              <a href="mailto:awangan.baybayin@gmail.com" className="social-icon" aria-label="Email">
                 <EmailIcon fontSize="small" />
               </a>
             </div>

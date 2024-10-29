@@ -1,17 +1,24 @@
-/* Container */
+.contact-us-form-container {
+    background-color: #ffffff;
+    color: #000000; 
+    padding: 0px 40px;
+    max-width: 1200px;
+    margin: 50px auto 0px auto;
+    border-radius: 5px;
+}
+
 .contact-container {
     display: flex;
     justify-content: space-between;
+    background-color: #000000; 
+    color: #ffffff; 
     padding: 40px;
-    background-color: #000000; /* AppColors.secondaryColor */
-    color: #ffffff; /* AppColors.primaryColor */
     max-width: 1200px;
-    margin: 50px auto 0 auto;
     border-radius: 10px;
     gap: 20px;
+    flex-wrap: wrap; 
 }
 
-/* Left Form Section */
 .contact-form {
     flex: 1;
     margin-right: 20px;
@@ -20,13 +27,13 @@
 .contact-title {
     font-size: 24px;
     font-weight: 700;
-    color: #FCC900; /* AppColors.tertiaryColor */
+    color: #FCC900; 
 }
 
 .contact-description {
     margin-bottom: 20px;
     font-size: 14px;
-    color: #FFFFFF; /* AppColors.darkGrayColor */
+    color: #FFFFFF; 
 }
 
 .form-row {
@@ -43,7 +50,7 @@
 
 .form-group label {
     font-size: 14px;
-    color: #FFFFFF; /* AppColors.primaryColor */
+    color: #FFFFFF; 
     margin-bottom: 5px;
 }
 
@@ -51,14 +58,14 @@
 .form-group textarea {
     padding: 10px;
     border-radius: 5px;
-    border: 1px solid #000000; /* Dark gray border */
-    background-color: #FFFFFF; /* AppColors.lightGrayColor */
-    color: #000000; /* AppColors.secondaryColor */
+    border: 1px solid #000000; 
+    background-color: #FFFFFF;
+    color: #000000;
 }
 
 .submit-button {
-    background-color: #FCC900; /* AppColors.tertiaryColor */
-    color: #000000; /* AppColors.secondaryColor */
+    background-color: #FCC900; 
+    color: #000000; 
     border: none;
     padding: 12px 24px;
     font-weight: bold;
@@ -69,56 +76,82 @@
 }
 
 .submit-button:hover {
-    background-color: #E6B800; /* Slightly darker shade for hover effect */
+    background-color: #E6B800; 
 }
 
-/* Right Details Section */
 .contact-details {
     flex: 1;
-    background-color: #000000; /* Dark gray to contrast with secondary color */
+    background-color: #000000;
     padding: 20px;
     border-radius: 5px;
 }
 
 .contact-details h3 {
     font-size: 18px;
-    color: #FCC900; /* AppColors.tertiaryColor */
+    color: #FCC900; 
     margin-bottom: 15px;
 }
 
 .contact-info {
     display: flex;
-    align-items: center; /* Center items vertically */
+    align-items: center;
     margin-bottom: 15px;
 }
 
 .contact-icon {
-    font-size: 20px; /* Slightly larger size for better readability */
-    color: #FCC900; /* AppColors.tertiaryColor */
+    font-size: 20px; 
+    color: #FCC900; 
     margin-right: 10px;
-    align-self: flex-start; /* Align icon with the top of the text */
+    align-self: flex-start; 
+}
+
+.contact-link {
+    color: #ffffff; 
+    text-decoration: none; 
+}
+
+.contact-link:hover {
+    text-decoration: underline; 
 }
 
 .contact-info p {
-    margin: 0; /* Remove default margin from the text */
-    line-height: 1.5; /* Adjust line height for better alignment */
+    margin: 0; 
+    line-height: 1.5; 
+    word-wrap: break-word; 
+    white-space: normal; 
 }
 
-/* Responsive adjustments */
-@media (max-width: 768px) {
+@media (max-width: 836px) {
     .contact-container {
         flex-direction: column;
-        padding: 20px;
-        margin-left: 50px; /* Add left margin in mobile view */
-        margin-right: 50px; /* Add right margin in mobile view */
+        align-items: center; 
+        padding: 40px;
     }
     
     .contact-form, .contact-details {
+        width: 100%; 
         margin-right: 0;
     }
     
     .form-row {
         flex-direction: column;
         gap: 15px;
+    }
+}
+
+@media (max-width: 480px) {
+    .contact-info {
+        flex-direction: column;
+        align-items: flex-start; 
+    }
+
+    .contact-icon {
+        margin-right: 0;
+        margin-bottom: 5px; 
+    }
+
+    .contact-info p {
+        text-align: left; 
+        width: 100%; 
     }
 }

@@ -66,23 +66,24 @@
   position: relative;
 }
 
+/* Updated Submenu Styles */
 .submenu-list {
   list-style-type: none;
   margin: 0;
-  padding: 0;
+  padding: 10px 0; /* Added padding to give more space on mobile */
   background-color: #000000;
   display: none;
+  border-radius: 5px; /* Optional: Add rounded corners */
 }
 
 .menu-item-with-submenu.open .submenu-list {
   display: flex;
   flex-direction: column;
-  padding-left: 20px;
 }
 
 .submenu-list li {
   margin-bottom: 5px;
-  padding-bottom: 5px; /* Add padding to give space for the line */
+  padding: 10px 15px; /* Added padding to each item for better spacing */
   border-bottom: 1px solid #555; /* Add a line below each item */
 }
 
@@ -94,12 +95,14 @@
   text-decoration: none;
   color: #FFFFFF;
   display: block;
-  padding: 10px 0; /* Add padding for better spacing */
+  padding: 5px;
 }
 
+/* Highlight and hover effects */
 .submenu-list li a:hover {
   color: #FCC900;
   background-color: #222; /* Optional: Add a hover effect */
+  padding: 5px;
 }
 
 /* Mobile Menu */
@@ -130,7 +133,7 @@
 }
 
 /* For Mobile */
-@media (max-width: 768px) {
+@media (max-width: 835px) {
   .menu-options {
     position: fixed;
     top: 0;
@@ -142,15 +145,20 @@
     justify-content: flex-start;
     align-items: flex-start;
     gap: 10px;
-    transform: translateX(100%);
+    transform: translateX(100%); /* Keep it hidden initially */
     transition: transform 0.3s ease;
     padding-top: 20px;
     padding-left: 30px;
     padding-right: 30px;
+    overflow-y: auto; /* Allow scrolling if menu is too long */
+    visibility: hidden; /* Ensure it’s hidden */
+    opacity: 0; /* Hide by default */
   }
 
   .menu-options.open {
-    transform: translateX(0);
+    transform: translateX(0); /* Show menu when open */
+    visibility: visible;
+    opacity: 1;
   }
 
   .submenu-list {
@@ -159,7 +167,13 @@
 
   .menu-item-with-submenu.open .submenu-list {
     display: block;
-    padding-left: 20px; /* Ensure it appears nested under Baybayin Tools */
+    padding: 10px 0; /* Ensure it appears nested under Baybayin Tools */
+    width: 100%; /* Make submenu full-width on mobile */
+    background-color: #333; /* Adjust background for mobile */
+  }
+
+  .submenu-list li {
+    padding: 10px; /* Increase padding for better touch targets */
   }
 
   .menu-toggle {
@@ -185,11 +199,13 @@
 }
 
 /* For Desktop */
-@media (min-width: 769px) {
+@media (min-width: 836px) {
   .menu-options {
-    flex-direction: row; /* Ensure desktop has items in a row */
     position: static;
     transform: none;
+    visibility: visible;
+    opacity: 1;
+    flex-direction: row;
     height: auto;
   }
 
@@ -216,5 +232,9 @@
   .menu-toggle,
   .close-menu {
     display: none;
+  }
+
+  .current-menu-parent > .menu-link {
+    color: #FCC900; /* Change text color to highlight */  
   }
 }

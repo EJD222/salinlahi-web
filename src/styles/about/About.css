@@ -1,7 +1,6 @@
-/* Container */
 .about-us-container {
-    background-color: #ffffff; /* White background */
-    color: #000000; /* Black text */
+    background-color: #ffffff; 
+    color: #000000;
     padding: 0px 40px;
     max-width: 1200px;
     margin: 50px auto 0px auto;
@@ -12,7 +11,7 @@
 .about-header {
     display: flex;
     gap: 20px;
-    margin-bottom: 40px;
+    margin-bottom: 30px;
 }
 
 .header-left, .header-right {
@@ -27,23 +26,22 @@
 }
 
 .header-left h1 {
-    color: #000000; /* Black for WHO WE ARE */
+    color: #000000; 
 }
 
 .salinlahi-title {
-    color: #FCC900; /* Yellow for SALINLAHI */
+    color: #FCC900; 
 }
 
 .header-left p,
 .header-right p {
     font-size: 16px;
     line-height: 1.5;
-    color: #000000; /* Slightly dark gray text for readability */
+    color: #000000; 
 }
 
-/* Team Section */
 .team-section {
-    background-color: #000000; /* Black background for team section */
+    background-color: #000000; 
     border-radius: 5px;
     padding: 15px;
     display: flex;
@@ -53,7 +51,7 @@
 .team-header {
     font-size: 24px;
     font-weight: bold;
-    color: #FCC900; /* Yellow for team header */
+    color: #FCC900; 
     writing-mode: vertical-lr;
     transform: rotate(180deg);
     text-align: center;
@@ -63,14 +61,12 @@
 }
 
 .team-members {
-    display: flex;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* Two columns by default */
     gap: 20px;
-    flex-wrap: wrap;
-    justify-content: space-around;
-    flex: 1;
     padding: 25px;
-    background-color: #ffffff; /* White background for team members */
-    border-radius: 0 5px 5px 0;
+    background-color: #ffffff; 
+    width: 100%;
 }
 
 .team-member {
@@ -82,41 +78,47 @@
 }
 
 .member-image {
-    width: 80px;
-    height: 80px;
-    background-color: #FCC900; /* Yellow circle */
-    border-radius: 50%;
-    margin-bottom: 10px;
+    height: auto; 
+    width: 100%;
+    object-fit: contain; 
+    background-color: #FCC900;
+    border-radius: 5px;
 }
+
 
 .member-name {
     font-weight: bold;
-    color: #000000; /* Black text */
+    color: #000000; 
     font-size: 16px;
     margin-bottom: 5px;
 }
 
 .member-role {
-    color: #FCC900; /* Yellow for role */
+    color: #FCC900;
     font-size: 14px;
 }
 
-/* Awanggan Rectangle */
-.awanggan-rectangle {
-    width: 150px;
-    height: 80px;
-    background-color: #000000; /* Dark rectangle for Awanggan */
-    border-radius: 8px;
-    margin-top: 10px;
+h1 {
+    word-break: break-word; 
+    overflow-wrap: break-word;
 }
 
-/* Responsive */
 @media (max-width: 768px) {
     .about-header {
         flex-direction: column;
     }
 
     .team-members {
-        justify-content: center;
+        grid-template-columns: repeat(2, 1fr);/* Stacks the images in one column */
+    }
+}
+
+@media (max-width: 500px) {
+    .about-header {
+        flex-direction: column;
+    }
+
+    .team-members {
+        grid-template-columns: 1fr; /* Stacks the images in one column */
     }
 }

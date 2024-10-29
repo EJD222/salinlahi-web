@@ -78,6 +78,12 @@ import unangLibroUha1 from "../assets/images/baybayin_guide_images/unang_libro_u
 import unangLibroUha2 from "../assets/images/baybayin_guide_images/unang_libro_uha_2.png";
 import comintang from "../assets/images/baybayin_guide_images/comintang.png";
 
+import awanngan1 from "../assets/images/about_us_images/awanggan_1.jpg";
+import awanngan2 from "../assets/images/about_us_images/awanggan_2.jpg";
+import awanngan3 from "../assets/images/about_us_images/awanggan_3.jpg";
+import awanngan4 from "../assets/images/about_us_images/awanggan_4.jpg";
+import awanngan5 from "../assets/images/about_us_images/awanggan_5.jpg";
+
 // Export each image as part of the BaybayinGuideImages object
 export const BaybayinGuideImages = {
     angonoPetroglyphs1,
@@ -157,3 +163,11 @@ export const BaybayinGuideImages = {
     unangLibroUha2,
     comintang
 };
+
+export const AwangganImages = {
+    awanngan1,
+    awanngan2,
+    awanngan3,
+    awanngan4,
+    awanngan5
+}
