@@ -8,6 +8,7 @@ import LessonList from './pages/baybayinTools/baybayinGuide/LessonList';
 import BaybayinPhrasebook from './pages/baybayinTools/baybayinPhrasebook/BaybayinPhrasebook';
 import PhraseList from './pages/baybayinTools/baybayinPhrasebook/PhraseList';
 import BaybayinCharacters from './pages/baybayinTools/baybayinCharacters/BaybayinCharacters';
+import BaybayinTransliterator from './pages/baybayinTools/baybayinTransliterator/YOLOv8Detection';
 import { LessonProvider } from './pages/baybayinTools/baybayinGuide/Lessons/LessonContext';
 import Footer from './components/Footer';
 
@@ -59,6 +60,7 @@ function AppRoutes() {
     '/baybayin-tools/baybayin-phrasebook',
     '/baybayin-tools/baybayin-phrasebook/:category',
     '/baybayin-tools/baybayin-characters',
+    '/baybayin-tools/baybayin-transliterator',
     '/baybayin-tools/baybayin-guide/1/ano-nga-ba-ang-baybayin',
     '/baybayin-tools/baybayin-guide/1/ano-nga-ba-ang-abugida',
     '/baybayin-tools/baybayin-guide/1/panutuntunan-ng-baybayin',
@@ -94,6 +96,7 @@ function AppRoutes() {
       <Route path="/baybayin-tools/baybayin-phrasebook" element={<BaybayinPhrasebook />} />
       <Route path="/baybayin-tools/baybayin-phrasebook/:category" element={<PhraseList />} />
       <Route path="/baybayin-tools/baybayin-characters" element={<BaybayinCharacters />} />
+      <Route path="/baybayin-tools/baybayin-transliterator" element={<BaybayinTransliterator />} />
       
       {/* Lesson routes within LessonProvider */}
       <Route path="/baybayin-tools/baybayin-guide/:category" element={<LessonProvider><LessonList /></LessonProvider>} />

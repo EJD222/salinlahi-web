@@ -1,6 +1,6 @@
 @font-face {
     font-family: 'BaybayinNeue';
-    src: url('../../../assets/fonts/BaybayinNeue.otf') format('opentype');
+    src: url('/public/assets/fonts/BaybayinNeue.otf') format('opentype');
     font-weight: normal;
     font-style: normal;
 }
@@ -70,6 +70,7 @@
     font-size: 20px;
     line-height: 1.2;
     text-align: start;
+    color: #ffffff;
 }
 
 .baybayin-text {

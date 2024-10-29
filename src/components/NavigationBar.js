@@ -1,12 +1,14 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import SalinlahiLogo from '../assets/images/logo/salinlahi_logo_1.png';
 import '../styles/NavigationBar.css';
 import ReorderIcon from '@mui/icons-material/Reorder';
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 import CloseIcon from '@mui/icons-material/Close';
 
 function NavigationBar() {
+  
+  const SalinlahiLogo = '/assets/images/logo/salinlahi_logo_1.png';
+
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isSubmenuOpen, setIsSubmenuOpen] = useState(false);
   const menuRef = useRef(null);

@@ -1,6 +1,6 @@
 @font-face {
     font-family: 'BaybayinNeue';
-    src: url('../../../assets/fonts/BaybayinNeue.otf') format('opentype');
+    src: url('/public/assets/fonts/BaybayinNeue.otf') format('opentype');
     font-weight: normal;
     font-style: normal;
 }
@@ -51,6 +51,7 @@
     font-size: 26px;
     margin: 0;
     word-wrap: break-word; /* Ensure long text wraps */
+    color: #FFFFFF;
 }
 
 .baybayin-script {
@@ -71,10 +72,11 @@
 .selected-category-title{
     font-size: 28px;
     font-weight: 700;
+    color: #000000;
 }
 
 .prev-btn:hover, .next-btn:hover {
-    color: #000000; /* Highlight the button on hover */
+    color: #000000;
 }
 
 .dot-indicator {

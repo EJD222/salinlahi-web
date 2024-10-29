@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import jsonData from '../../../assets/json/BaybayinCharacters.json'; // Adjust path to your JSON file
-import { mapToBaybayinCustomFont } from '../../../assets/utils/MapToBaybayinCustomFont';
+import jsonData from '../../../json/BaybayinCharacters.json'; // Adjust path to your JSON file
+import { mapToBaybayinCustomFont } from '../../../utils/MapToBaybayinCustomFont';
 import '../../../styles/baybayinTools/baybayinCharacters/BaybayinCharacters.css';
 
 function BaybayinCharacters() {

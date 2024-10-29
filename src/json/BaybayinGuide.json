@@ -1,0 +1,112 @@
+[
+  {
+    "categoryNumber": "1",
+    "categoryTitle": "Mga Batayan sa Pagsulat ng Baybayin",
+    "categoryTitleBaybayin": "Manga Batayan Sa Pagsulat nang Baybayin",
+    "image": "girl_writing.png",
+    "image2": "girl_writing_2.png",
+    "route": "/baybayin-tools/baybayin-guide/1",
+    "lessons": [
+      {
+        "lessonNumber": 1.1,
+        "lessonTitle": "Ano nga ba ang Baybayin?",
+        "route": "/baybayin-tools/baybayin-guide/1/ano-nga-ba-ang-baybayin"
+      },
+      {
+        "lessonNumber": 1.2,
+        "lessonTitle": "Ano nga ba ang Abugida?",
+        "route": "/baybayin-tools/baybayin-guide/1/ano-nga-ba-ang-abugida"
+      },
+      {
+        "lessonNumber": 1.3,
+        "lessonTitle": "Panutuntunan ng Baybayin",
+        "route": "/baybayin-tools/baybayin-guide/1/panutuntunan-ng-baybayin"
+      }
+    ]
+  },
+  {
+    "categoryNumber": "2",
+    "categoryTitle": "Mga Bakas ng Sinaunang Baybayin",
+    "categoryTitleBaybayin": "Manga Bakas nang Sinaunang Baybayin",
+    "image": "boy_searching.png",
+    "image2": "boy_searching_2.png",
+    "route": "/baybayin-tools/baybayin-guide/2",
+    "lessons": [
+      {
+        "lessonNumber": 2.1,
+        "lessonTitle": "Unang Bakas",
+        "route": "/baybayin-tools/baybayin-guide/2/unang-bakas"
+      },
+      {
+        "lessonNumber": 2.2,
+        "lessonTitle": "Ikalawang Bakas",
+        "route": "/baybayin-tools/baybayin-guide/2/ikalawang-bakas"
+      },
+      {
+        "lessonNumber": 2.3,
+        "lessonTitle": "Ikatlong Bakas",
+        "route": "/baybayin-tools/baybayin-guide/2/ikatlong-bakas"
+      },
+      {
+        "lessonNumber": 2.4,
+        "lessonTitle": "Ika-apat na Bakas",
+        "route": "/baybayin-tools/baybayin-guide/2/ika-apat-na-bakas"
+      },
+      {
+        "lessonNumber": 2.5,
+        "lessonTitle": "Ikalimang Bakas",
+        "route": "/baybayin-tools/baybayin-guide/2/ikalimang-bakas"
+      },
+      {
+        "lessonNumber": 2.6,
+        "lessonTitle": "Ika-anim na Bakas",
+        "route": "/baybayin-tools/baybayin-guide/2/ika-anim-na-bakas"
+      },
+      {
+        "lessonNumber": 2.7,
+        "lessonTitle": "Ikapitong Bakas",
+        "route": "/baybayin-tools/baybayin-guide/2/ikapitong-bakas"
+      },
+      {
+        "lessonNumber": 2.8,
+        "lessonTitle": "Ikawalong Bakas",
+        "route": "/baybayin-tools/baybayin-guide/2/ikawalong-bakas"
+      },
+      {
+        "lessonNumber": 2.9,
+        "lessonTitle": "Ikasyam na Bakas",
+        "route": "/baybayin-tools/baybayin-guide/2/ikasyam-na-bakas"
+      }
+    ]
+  },
+  {
+    "categoryNumber": "3",
+    "categoryTitle": "Baybayin: Titik ng Sinaunang Panahon",
+    "categoryTitleBaybayin": "Baybayin: Titik nang Sinaunang Panahon",
+    "image": "group_holding_a_letter.png",
+    "image2": "group_holding_a_letter_2.png",
+    "route": "/baybayin-tools/baybayin-guide/3",
+    "lessons": [
+      {
+        "lessonNumber": 3.1,
+        "lessonTitle": "Homo Sapiens",
+        "route": "/baybayin-tools/baybayin-guide/3/homo-sapiens"
+      },
+      {
+        "lessonNumber": 3.2,
+        "lessonTitle": "Kabibe",
+        "route": "/baybayin-tools/baybayin-guide/3/kabibe"
+      },
+      {
+        "lessonNumber": 3.3,
+        "lessonTitle": "Taklobo",
+        "route": "/baybayin-tools/baybayin-guide/3/taklobo"
+      },
+      {
+        "lessonNumber": 3.4,
+        "lessonTitle": "Precolonial Philippines",
+        "route": "/baybayin-tools/baybayin-guide/3/precolonial-philippines"
+      }
+    ]
+  }
+]

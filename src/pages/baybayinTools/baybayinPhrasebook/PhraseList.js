@@ -3,7 +3,7 @@ import { useParams, useNavigate } from 'react-router-dom';
 import { useSwipeable } from 'react-swipeable';  // Import react-swipeable for swipe functionality
 import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew'; // MUI icon
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos'; // MUI icon
-import jsonData from '../../../assets/json/BaybayinPhrasebook.json';
+import jsonData from '../../../json/BaybayinPhrasebook.json';
 import '../../../styles/baybayinTools/baybayinPhrasebook/PhraseList.css';
 
 function PhraseList() {

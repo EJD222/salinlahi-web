@@ -119,6 +119,7 @@
     line-height: 1.5; 
     word-wrap: break-word; 
     white-space: normal; 
+    color: #FFFFFF;
 }
 
 @media (max-width: 836px) {

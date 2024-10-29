@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { mapToBaybayinCustomFont } from '../../../../assets/utils/MapToBaybayinCustomFont';
+import { mapToBaybayinCustomFont } from '../../../../utils/MapToBaybayinCustomFont'; 
 
 const TextBlock = ({ block, showLine = false, fontSize = "15px" }) => {
-  // Renders text with both bold and Baybayin-specific words
+
   const renderTextWithBoldAndBaybayin = () => {
     const text = block?.text || "";
     const boldWords = block?.boldWords || [];

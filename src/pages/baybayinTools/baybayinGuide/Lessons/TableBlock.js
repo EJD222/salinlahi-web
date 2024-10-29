@@ -1,12 +1,11 @@
-// TableBlock.js
 import React from 'react';
 import PropTypes from 'prop-types';
-import { mapToBaybayinCustomFont } from '../../../../assets/utils/MapToBaybayinCustomFont'; // Adjust the path accordingly
+import { mapToBaybayinCustomFont } from '../../../../utils/MapToBaybayinCustomFont'; 
 
 const TableBlock = ({ block }) => {
+  
   const tableData = block?.tableData || [];
 
-  // Determine text style for each cell based on type and position
   const determineTextStyle = (rowIndex, columnIndex) => {
     if (rowIndex === 0) {
       if (block.type === 'table_1' || block.type === 'table_3') {

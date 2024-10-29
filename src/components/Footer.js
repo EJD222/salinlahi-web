@@ -1,11 +1,13 @@
 import React from 'react';
 import '../styles/Footer.css';
-import logo from '../assets/images/logo/salinlahi_logo_1.png';
 import FacebookIcon from '@mui/icons-material/Facebook';
 import InstagramIcon from '@mui/icons-material/Instagram';
 import EmailIcon from '@mui/icons-material/Email';
 
 const Footer = () => {
+  
+  const logo = '/assets/images/logo/salinlahi_logo_1.png';
+
   return (
     <div className="footer-container">
       <div className="footer-inner">

@@ -1,0 +1,170 @@
+[
+    {
+      "categoryNumber": 1,
+      "categoryTitle": "Pagbati",
+      "image": "pagbati.png",
+      "route": "/mga-pagbati", 
+      "phrases": [
+        {
+          "phraseInLatinScript": "Magandang umaga!",
+          "phraseInBaybayin": "magandang umaga!"
+        },
+        {
+          "phraseInLatinScript": "Magandang hapon!",
+          "phraseInBaybayin": "magandang hapon!"
+        },
+        {
+          "phraseInLatinScript": "Magandang gabi!",
+          "phraseInBaybayin": "magandang gabi!"
+        },
+        {
+          "phraseInLatinScript": "Ano ang iyong pangalan?",
+          "phraseInBaybayin": "ano ang iyong pangalan?"
+        },
+        {
+          "phraseInLatinScript": "Mag-ingat ka.",
+          "phraseInBaybayin": "mag-ingat ka."
+        }
+      ]
+    },
+    {
+      "categoryNumber": 2,
+      "categoryTitle": "Direksyon",
+      "image": "direksyon.png",
+      "route": "/mga-direksyon",  
+      "phrases": [
+        {
+          "phraseInLatinScript": "Saan ang simbahan?",
+          "phraseInBaybayin": "saan ang simbahan?"
+        },
+        {
+          "phraseInLatinScript": "Paano ako makakarating doon?",
+          "phraseInBaybayin": "paano ako makakarating doon?"
+        },
+        {
+          "phraseInLatinScript": "Gaano kalayo ang paaralan mula rito?",
+          "phraseInBaybayin": "Gaano kalayo ang paaralan mula rito?"
+        },
+        {
+          "phraseInLatinScript": "Kumaliwa ka.",
+          "phraseInBaybayin": "kumaliwa ka."
+        },
+        {
+          "phraseInLatinScript": "Kumanan ka.",
+          "phraseInBaybayin": "kumanan ka."
+        }
+      ]
+    },
+    {
+      "categoryNumber": 3,
+      "categoryTitle": "Emergency",
+      "image": "emergency.png",
+      "route": "/mga-emergency",  
+      "phrases": [
+        {
+          "phraseInLatinScript": "Tulong!",
+          "phraseInBaybayin": "tulong!"
+        },
+        {
+          "phraseInLatinScript": "Nasaan ang ospital?",
+          "phraseInBaybayin": "nasaan ang ospital?"
+        },
+        {
+          "phraseInLatinScript": "May sunog!",
+          "phraseInBaybayin": "may sunog!"
+        },
+        {
+          "phraseInLatinScript": "Tumawag kayo ng doktor!",
+          "phraseInBaybayin": "tumawag kayo nang doktor!"
+        },
+        {
+          "phraseInLatinScript": "Saan ang pinakamalapit na istasyon ng pulisya?",
+          "phraseInBaybayin": "saan ang pinakamalapit na istasyon nang pulisya?"
+        }
+      ]
+    },
+    {
+      "categoryNumber": 4,
+      "categoryTitle": "Usapan",
+      "image": "usapan.png",
+      "route": "/mga-usapan",  
+      "phrases": [
+        {
+          "phraseInLatinScript": "Maraming salamat!",
+          "phraseInBaybayin": "maraming salamat!"
+        },
+        {
+          "phraseInLatinScript": "Hindi ko maintindihan",
+          "phraseInBaybayin": "hindi ko maintindihan"
+        },
+        {
+          "phraseInLatinScript": "Ipagpaumanhin mo",
+          "phraseInBaybayin": "ipagpaumanhin mo"
+        },
+        {
+          "phraseInLatinScript": "Magkano po ito?",
+          "phraseInBaybayin": "magkano po ito?"
+        },
+        {
+          "phraseInLatinScript": "Walang anuman.",
+          "phraseInBaybayin": "walang anuman."
+        }
+      ]
+    },
+    {
+      "categoryNumber": 5,
+      "categoryTitle": "Kaganapan",
+      "image": "kaganapan.png",
+      "route": "/mga-kaganapan",  
+      "phrases": [
+        {
+          "phraseInLatinScript": "Maligayang kaarawan!",
+          "phraseInBaybayin": "maligayang kaarawan!"
+        },
+        {
+          "phraseInLatinScript": "Ako ay nakikiramay.",
+          "phraseInBaybayin": "ako ay nakikiramay."
+        },
+        {
+          "phraseInLatinScript": "Maligayang pasko!",
+          "phraseInBaybayin": "maligayang pasko!"
+        },
+        {
+          "phraseInLatinScript": "Binabati kita!",
+          "phraseInBaybayin": "binabati kita!"
+        },
+        {
+          "phraseInLatinScript": "Manigong bagong taon!",
+          "phraseInBaybayin": "Manigong bagong taon!"
+        }
+      ]
+    },
+    {
+      "categoryNumber": 6,
+      "categoryTitle": "Pagkain",
+      "image": "hapag_kainan.png",
+      "route": "/sa-hapag-kainan", 
+      "phrases": [
+        {
+          "phraseInLatinScript": "Nagugutom ako.",
+          "phraseInBaybayin": "nagugutom ako."
+        },
+        {
+          "phraseInLatinScript": "Pakisuyo ang kutsara at tinidor.",
+          "phraseInBaybayin": "pakisuyo ang kutsara at tinidor."
+        },
+        {
+          "phraseInLatinScript": "Ako na ang maghuhugas ng plato.",
+          "phraseInBaybayin": "Ako na ang maghuhugas ng plato."
+        },
+        {
+          "phraseInLatinScript": "Saan tayo kakain?",
+          "phraseInBaybayin": "saan tayo kakain?"
+        },
+        {
+          "phraseInLatinScript": "Ang sarap!",
+          "phraseInBaybayin": "ang sarap!"
+        }
+      ]
+    }
+]

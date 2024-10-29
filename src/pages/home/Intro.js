@@ -1,9 +1,11 @@
 import React from 'react';
 import '../../styles/home/Intro.css';
-import SaLinlahiMascot from '../../assets/images/logo/salinlahi_mascot.png';
 import GetAppIcon from '@mui/icons-material/GetApp'; // Import Material UI Download icon
 
 function Intro() {
+
+  const SalinlahiMascot = 'assets/images/logo/salinlahi_mascot.png'
+
   return (
     <div className="intro-container">
       <div className="container text-center intro-section">
@@ -27,7 +29,7 @@ function Intro() {
 
           {/* Mascot Image */}
           <div className="col-lg-6 col-md-6 d-flex justify-content-center justify-content-lg-end">
-            <img src={SaLinlahiMascot} alt="Salinlahi Mascot" className="salinlahi-mascot" />
+            <img src={SalinlahiMascot} alt="Salinlahi Mascot" className="salinlahi-mascot" />
           </div>
         </div>
       </div>

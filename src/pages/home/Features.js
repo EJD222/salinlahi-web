@@ -1,10 +1,12 @@
 import React from 'react';
 import '../../styles/home/Features.css';
-import BaybayinIcon from '../../assets/images/logo/salinlahi_mascot.png'; 
-import ToolsIcon from '../../assets/images/logo/salinlahi_mascot.png'; 
-import CultureIcon from '../../assets/images/logo/salinlahi_mascot.png';
 
 function Features() {
+
+  const BaybayinIcon = 'assets/images/logo/salinlahi_mascot.png'
+  const ToolsIcon = 'assets/images/logo/salinlahi_mascot.png'
+  const CultureIcon = 'assets/images/logo/salinlahi_mascot.png'
+
   return (
     <div className="features-section container">
       <h2 className="text-center">Explore Our App Features</h2>
