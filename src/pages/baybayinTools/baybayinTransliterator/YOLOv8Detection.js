@@ -1,10 +1,8 @@
-import React, { useRef, useState, useEffect } from 'react';
-import Webcam from 'react-webcam';
+import React, { useState, useRef } from 'react';
 import * as ort from 'onnxruntime-web';
-import '../../../styles/baybayinTools/baybayinTransliterator/YOLOv8Detection.css';
 
-// Labels for your ONNX model
-const labels = [
+// COCO or custom labels
+const customLabels = [
   "a", "b", "ba", "be_bi", "bo_bu", "d_r", "da_ra", "de_di_re_ri",
   "do_du_ro_ru", "e_i", "g", "ga", "ge_gi", "go_gu", "h", "ha",
   "he_hi", "ho_hu", "k", "ka", "ke_ki", "ko_ku", "l", "la",
@@ -14,121 +12,155 @@ const labels = [
   "t", "ta", "te_ti", "to_tu", "w", "wa", "we_wi", "wo_wu",
   "y", "ya", "ye_yi", "yo_yu"
 ];
-
-const modelPath = '/yolov8n.onnx'; // Make sure the model is in the public folder
-
 const YOLOv8Detection = () => {
-  const webcamRef = useRef(null);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
+  const [originalImg, setOriginalImg] = useState(null);
   const canvasRef = useRef(null);
-  const [model, setModel] = useState(null);
-  const [loading, setLoading] = useState(true);
 
-  useEffect(() => {
-    // Load the ONNX model when the component mounts
-    const loadModel = async () => {
-      try {
-        const session = await ort.InferenceSession.create(modelPath, {
-          executionProviders: ['wasm'], // Use WebAssembly for browser inference
-        });
-        setModel(session);
-        setLoading(false);
-        console.log('ONNX model loaded.');
-      } catch (err) {
-        console.error('Failed to load model:', err);
-      }
-    };
+  // Handle image upload and detection
+  const handleImageUpload = async (event) => {
+    const file = event.target.files[0];
+    if (!file) return;
 
-    loadModel();
-  }, []);
+    setLoading(true);
+    setError(null);
 
-  // Capture image from webcam and run inference
-  const captureAndDetect = async () => {
-    if (!webcamRef.current || !model) return;
+    try {
+      const img = new Image();
+      img.src = URL.createObjectURL(file);
 
-    // Capture a screenshot from the webcam
-    const imageSrc = webcamRef.current.getScreenshot();
-    const imageBlob = await fetch(imageSrc).then(res => res.blob());
-    const imageArrayBuffer = await imageBlob.arrayBuffer();
+      img.onload = async () => {
+        // Store original image for display
+        setOriginalImg(img);
+        
+        // Preprocess image and run YOLOv8 detection
+        const { preprocessedCanvas, scaleFactor, offsetX, offsetY } = preprocessImage(img);
+        const inputTensor = createInputTensor(preprocessedCanvas);
+        const output = await runModel(inputTensor);
 
-    // Preprocess image to match YOLOv8 input format
-    const inputTensor = preprocessImage(imageArrayBuffer);
-    const results = await model.run({ images: inputTensor });
-
-    // Postprocess results and draw boxes on canvas
-    const detectionData = postprocessResults(results);
-    drawDetections(detectionData);
+        // Draw detections on the original-sized image
+        drawDetections(output, img, scaleFactor, offsetX, offsetY);
+      };
+    } catch (err) {
+      setError(`Error: ${err.message}`);
+      console.error('Error during detection:', err);
+    } finally {
+      setLoading(false);
+    }
   };
 
-  // Preprocess image to match YOLOv8 input format
-  const preprocessImage = (buffer) => {
-    // Placeholder preprocessing: resize and normalize as needed
-    const inputTensor = new ort.Tensor('float32', new Float32Array(buffer), [1, 3, 640, 640]);
-    return inputTensor;
+  // Preprocess the image to 640x640 with padding
+  const preprocessImage = (img) => {
+    const canvas = document.createElement('canvas');
+    const ctx = canvas.getContext('2d');
+    canvas.width = 640;
+    canvas.height = 640;
+
+    // Calculate scaling factor and offsets
+    const scaleFactor = Math.min(640 / img.width, 640 / img.height);
+    const resizedWidth = img.width * scaleFactor;
+    const resizedHeight = img.height * scaleFactor;
+    const offsetX = (640 - resizedWidth) / 2;
+    const offsetY = (640 - resizedHeight) / 2;
+
+    // Draw the image on the canvas with padding
+    ctx.fillStyle = 'black';
+    ctx.fillRect(0, 0, 640, 640);
+    ctx.drawImage(img, offsetX, offsetY, resizedWidth, resizedHeight);
+
+    return { preprocessedCanvas: canvas, scaleFactor, offsetX, offsetY };
   };
 
-  // Postprocess YOLOv8 output for display
-  const postprocessResults = (results) => {
-    const boxes = results['output'].data; // Adjust this based on YOLOv8 output
-    const detectionData = [];
+  // Create input tensor from the preprocessed canvas
+  const createInputTensor = (canvas) => {
+    const ctx = canvas.getContext('2d');
+    const imgData = ctx.getImageData(0, 0, 640, 640);
+    const { data } = imgData;
 
-    // Assume the model returns bounding boxes, confidences, and class IDs
-    for (let i = 0; i < boxes.length; i += 6) {
-      const [x, y, w, h, confidence, classId] = boxes.slice(i, i + 6);
-      if (confidence > 0.5) {
-        detectionData.push({
-          x, y, w, h, confidence,
-          className: labels[classId] || 'Unknown' // Map class ID to label
-        });
-      }
+    const floatData = new Float32Array(3 * 640 * 640);
+    for (let i = 0, j = 0; i < data.length; i += 4, j++) {
+      floatData[j] = data[i] / 255; // R
+      floatData[j + 640 * 640] = data[i + 1] / 255; // G
+      floatData[j + 2 * 640 * 640] = data[i + 2] / 255; // B
     }
 
-    return detectionData;
+    return new ort.Tensor('float32', floatData, [1, 3, 640, 640]);
   };
 
-  // Draw detections on the canvas
-  const drawDetections = (detections) => {
+  // Run the ONNX model
+  const runModel = async (inputTensor) => {
+    const modelPath = '/assets/models/best.onnx'; // Update this to your model path
+
+    try {
+      const session = await ort.InferenceSession.create(modelPath, {
+        executionProviders: ['wasm'],
+      });
+
+      const feeds = { images: inputTensor };
+      const results = await session.run(feeds);
+      return results['output0'].data;
+    } catch (err) {
+      throw new Error(`Failed to load or run the model: ${err.message}`);
+    }
+  };
+
+  // Draw detections on the original image size
+  const drawDetections = (output, img, scaleFactor, offsetX, offsetY) => {
     const canvas = canvasRef.current;
     const ctx = canvas.getContext('2d');
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    canvas.width = img.width;
+    canvas.height = img.height;
 
-    detections.forEach((detection) => {
-      ctx.beginPath();
-      ctx.rect(detection.x, detection.y, detection.w, detection.h);
-      ctx.lineWidth = 2;
-      ctx.strokeStyle = 'red';
-      ctx.stroke();
-      ctx.fillStyle = 'red';
-      ctx.fillText(
-        `${detection.className} (${(detection.confidence * 100).toFixed(1)}%)`,
-        detection.x,
-        detection.y - 5
-      );
-    });
+    ctx.clearRect(0, 0, img.width, img.height);
+    ctx.drawImage(img, 0, 0, img.width, img.height);
+
+    const numBoxes = 8400; // Adjust based on model output
+    const numClasses = customLabels.length; // Adjust based on your labels
+
+    ctx.strokeStyle = '#00FF00';
+    ctx.lineWidth = 2;
+    ctx.font = '18px Arial';
+
+    // Loop through the model's output to extract boxes
+    for (let i = 0; i < numBoxes; i++) {
+      const [classId, score] = [...Array(numClasses).keys()]
+        .map((col) => [col, output[numBoxes * (col + 4) + i]])
+        .reduce((max, curr) => (curr[1] > max[1] ? curr : max), [0, 0]);
+
+      // Only draw boxes with a confidence score > 0.5
+      if (score > 0.5) {
+        const xc = output[i];
+        const yc = output[numBoxes + i];
+        const w = output[2 * numBoxes + i];
+        const h = output[3 * numBoxes + i];
+
+        // Convert coordinates back to the original scale
+        const x1 = (xc - w / 2 - offsetX) / scaleFactor;
+        const y1 = (yc - h / 2 - offsetY) / scaleFactor;
+        const x2 = (xc + w / 2 - offsetX) / scaleFactor;
+        const y2 = (yc + h / 2 - offsetY) / scaleFactor;
+
+        // Draw bounding box
+        ctx.strokeRect(x1, y1, x2 - x1, y2 - y1);
+
+        // Draw label
+        const label = `${customLabels[classId]} (${(score * 100).toFixed(1)}%)`;
+        ctx.fillStyle = '#00FF00';
+        ctx.fillText(label, x1, y1 - 5);
+      }
+    }
   };
 
   return (
-    <div className="yolov8-container">
-      <h2>YOLOv8 Detection with Custom Labels</h2>
-      <div className="webcam-container">
-        <Webcam
-          ref={webcamRef}
-          screenshotFormat="image/jpeg"
-          width={640}
-          height={480}
-        />
-        <canvas
-          ref={canvasRef}
-          className="overlay-canvas"
-          width={640}
-          height={480}
-        />
-      </div>
-      <button className="detect-btn" onClick={captureAndDetect}>
-        Capture & Detect
-      </button>
-      {loading && <p>Loading model...</p>}
+    <div>
+      <h2>YOLOv8 Object Detection</h2>
+      <input type="file" onChange={handleImageUpload} accept="image/*" />
+      {loading && <p>Loading model and detecting objects...</p>}
+      {error && <p style={{ color: 'red' }}>{error}</p>}
+      <canvas ref={canvasRef} style={{ border: '1px solid black', marginTop: '10px' }} />
     </div>
-  );  
+  );
 };
 
 export default YOLOv8Detection;
