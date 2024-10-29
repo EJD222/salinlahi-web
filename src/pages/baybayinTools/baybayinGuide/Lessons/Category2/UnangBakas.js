@@ -3,7 +3,7 @@ import LessonContentTemplate from '../LessonContentTemplate';
 import { BaybayinGuideImages } from '../../../../../values/Media.js';
 
 const UnangBakas = ({ lessonTitle }) => {
-  const [lessonData, setLessonData] = useState({
+  const [lessonData] = useState({
     title: 'Unang Bakas',
     contentBlocks: [
       { type: 'text_with_line', text: 'Angono Petroglyphs' },

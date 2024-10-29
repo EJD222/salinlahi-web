@@ -3,7 +3,7 @@ import LessonContentTemplate from '../LessonContentTemplate';
 import { BaybayinGuideImages } from '../../../../../values/Media.js';
 
 const IkaApatNaBakas = ({ lessonTitle }) => {
-  const [lessonData, setLessonData] = useState({
+  const [lessonData] = useState({
     title: 'Ika-apat Na Bakas',
     contentBlocks: [
       { type: 'text_with_line', text: 'Vocabulario De Lengua Tagala' },

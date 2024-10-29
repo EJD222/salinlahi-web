@@ -3,7 +3,7 @@ import LessonContentTemplate from '../LessonContentTemplate';
 import { BaybayinGuideImages } from '../../../../../values/Media.js';
 
 const IkalawangBakas = ({ lessonTitle }) => {
-  const [lessonData, setLessonData] = useState({
+  const [lessonData] = useState({
     title: 'Ikalawang Bakas',
     contentBlocks: [
       { type: 'text_with_line', text: 'Laguna Copperplate Inscription' },

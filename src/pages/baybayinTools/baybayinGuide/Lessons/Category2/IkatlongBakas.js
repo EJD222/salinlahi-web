@@ -3,7 +3,7 @@ import LessonContentTemplate from '../LessonContentTemplate';
 import { BaybayinGuideImages } from '../../../../../values/Media.js';
 
 const IkatlongBakas = ({ lessonTitle }) => {
-  const [lessonData, setLessonData] = useState({
+  const [lessonData] = useState({
     title: 'Ikatlong Bakas',
     contentBlocks: [
       { type: 'text_with_line', text: 'Doctrina Christiana' },
