@@ -1,16 +1,18 @@
-import React, { useState } from 'react';
-import { TransformWrapper, TransformComponent } from 'react-zoom-pan-pinch';
-import '../../../../styles/baybayinTools/baybayinGuide/Lessons/ImageBlock.css';
+import React, { useState } from "react"
+import { TransformWrapper, TransformComponent } from "react-zoom-pan-pinch"
+import "../../../../styles/baybayinTools/baybayinGuide/Lessons/ImageBlock.css"
 
 const ImageBlock = ({ block }) => {
-  const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(false)
 
-  const handleCloseModal = () => setIsOpen(false);
+  const handleCloseModal = () => setIsOpen(false)
 
   return (
-    <div style={{ marginBottom: '15px' }}>
-      {/* Thumbnail */}
-      <div onClick={() => setIsOpen(true)} style={{ cursor: 'pointer', textAlign: 'center' }}>
+    <div style={{ marginBottom: "15px" }}>
+      <div
+        onClick={() => setIsOpen(true)}
+        style={{ cursor: "pointer", textAlign: "center" }}
+      >
         <img
           src={block.imageUrl || block.assetImagePath}
           alt="Content Block"
@@ -18,7 +20,6 @@ const ImageBlock = ({ block }) => {
         />
       </div>
 
-      {/* Modal with Zoom & Pan */}
       {isOpen && (
         <div className="modal" onClick={handleCloseModal}>
           <div className="modal-content" onClick={(e) => e.stopPropagation()}>
@@ -29,13 +30,17 @@ const ImageBlock = ({ block }) => {
               centerOnInit
               wheel={{ disabled: false }}
               pinch={{ disabled: false }}
-              doubleClick={{ disabled: true }}  // Disables double-click zoom
+              doubleClick={{ disabled: true }}
             >
               <TransformComponent>
                 <img
                   src={block.imageUrl || block.assetImagePath}
                   alt="Content Block"
-                  style={{ width: '100%', maxHeight: '80vh', objectFit: 'contain' }}
+                  style={{
+                    width: "100%",
+                    maxHeight: "80vh",
+                    objectFit: "contain",
+                  }}
                 />
               </TransformComponent>
             </TransformWrapper>
@@ -43,7 +48,7 @@ const ImageBlock = ({ block }) => {
         </div>
       )}
     </div>
-  );
-};
+  )
+}
 
-export default ImageBlock;
+export default ImageBlock

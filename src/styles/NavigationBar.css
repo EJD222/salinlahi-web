@@ -1,6 +1,6 @@
 @font-face {
-  font-family: 'Deutsch';
-  src: url('/public/assets/fonts/Deutsch.ttf') format('truetype');
+  font-family: "Deutsch";
+  src: url("/public/assets/fonts/Deutsch.ttf") format("truetype");
   font-weight: normal;
   font-style: normal;
 }
@@ -30,50 +30,49 @@
 .title-container h2 {
   margin-top: 10px;
   margin-left: 10px;
-  font-family: 'Deutsch', sans-serif;
+  font-family: "Deutsch", sans-serif;
   color: #FCC900;
   letter-spacing: 0.25px;
 }
 
 .menu-item-with-submenu > .menu-link {
   font-weight: 600;
-  color: #FFFFFF; /* Set the specific color for Baybayin Tools */
+  color: #FFFFFF; 
 }
 
 .menu-item-with-submenu > .menu-link:hover {
-  color: #FCC900; /* Change color on hover if needed */
+  color: #fcc900; 
 }
 
 .menu-options {
   display: flex;
-  flex-direction: column; /* Change for mobile */
+  flex-direction: column; 
   gap: 20px;
 }
 
 .menu-options a {
   font-weight: 600;
   text-decoration: none;
-  color: #FFFFFF;
+  color: #ffffff;
 }
 
 .menu-options a:hover,
 .menu-options a:focus,
 .menu-options a:active {
-  color: #FCC900;
+  color: #fcc900;
 }
 
 .menu-item-with-submenu {
   position: relative;
 }
 
-/* Updated Submenu Styles */
 .submenu-list {
   list-style-type: none;
   margin: 0;
-  padding: 10px 0; /* Added padding to give more space on mobile */
+  padding: 10px 0;
   background-color: #000000;
   display: none;
-  border-radius: 5px; /* Optional: Add rounded corners */
+  border-radius: 5px; 
 }
 
 .menu-item-with-submenu.open .submenu-list {
@@ -83,12 +82,12 @@
 
 .submenu-list li {
   margin-bottom: 5px;
-  padding: 10px 15px; /* Added padding to each item for better spacing */
-  border-bottom: 1px solid #555; /* Add a line below each item */
+  padding: 10px 15px; 
+  border-bottom: 1px solid #555; 
 }
 
 .submenu-list li:last-child {
-  border-bottom: none; /* Remove the line from the last item */
+  border-bottom: none;
 }
 
 .submenu-list li a {
@@ -98,14 +97,12 @@
   padding: 5px;
 }
 
-/* Highlight and hover effects */
 .submenu-list li a:hover {
-  color: #FCC900;
-  background-color: #222; /* Optional: Add a hover effect */
+  color: #fcc900;
+  background-color: #6C6C6C6C;
   padding: 5px;
 }
 
-/* Mobile Menu */
 .menu-toggle {
   display: none;
   background: none;
@@ -127,12 +124,10 @@
   color: white;
 }
 
-/* Highlight active link with FCC900 */
 .active-link {
-  color: #FCC900;
+  color: #fcc900;
 }
 
-/* For Mobile */
 @media (max-width: 835px) {
   .menu-options {
     position: fixed;
@@ -145,18 +140,18 @@
     justify-content: flex-start;
     align-items: flex-start;
     gap: 10px;
-    transform: translateX(100%); /* Keep it hidden initially */
+    transform: translateX(100%); 
     transition: transform 0.3s ease;
     padding-top: 20px;
     padding-left: 30px;
     padding-right: 30px;
-    overflow-y: auto; /* Allow scrolling if menu is too long */
-    visibility: hidden; /* Ensure it’s hidden */
-    opacity: 0; /* Hide by default */
+    overflow-y: auto; 
+    visibility: hidden; 
+    opacity: 0; 
   }
 
   .menu-options.open {
-    transform: translateX(0); /* Show menu when open */
+    transform: translateX(0);
     visibility: visible;
     opacity: 1;
   }
@@ -167,13 +162,13 @@
 
   .menu-item-with-submenu.open .submenu-list {
     display: block;
-    padding: 10px 0; /* Ensure it appears nested under Baybayin Tools */
-    width: 100%; /* Make submenu full-width on mobile */
-    background-color: #333; /* Adjust background for mobile */
+    padding: 10px 0; 
+    width: 100%; 
+    background-color: #333; 
   }
 
   .submenu-list li {
-    padding: 10px; /* Increase padding for better touch targets */
+    padding: 10px; 
   }
 
   .menu-toggle {
@@ -184,13 +179,11 @@
     display: block;
   }
 
-  /* Remove padding for mobile screens */
   .navbar {
     padding-left: 30px;
     padding-right: 30px;
   }
 
-  /* Adjust submenu appearance for mobile */
   .submenu-list {
     background-color: #333;
     width: 100%;
@@ -198,7 +191,6 @@
   }
 }
 
-/* For Desktop */
 @media (min-width: 836px) {
   .menu-options {
     position: static;
@@ -235,6 +227,6 @@
   }
 
   .current-menu-parent > .menu-link {
-    color: #FCC900; /* Change text color to highlight */  
+    color: #fcc900; 
   }
 }

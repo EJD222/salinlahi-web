@@ -1,177 +1,166 @@
 @font-face {
-    font-family: 'BaybayinNeue';
-    src: url('/public/assets/fonts/BaybayinNeue.otf') format('opentype');
-    font-weight: normal;
-    font-style: normal;
-  }
-  
-  .baybayin-character {
-    font-family: 'BaybayinNeue';
-  }
-  
-  .character-list-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding: 40px;
-    margin: 50px auto 0; /* Center horizontally and add top margin */
-    width: 100%;
-    max-width: 1200px;
-    box-sizing: border-box;
-  }
-  
-  .category-tabs {
-    display: flex;
-    justify-content: center;  /* Center the tabs */
-    gap: 10px;
-    background-color: #fcc900;
-    padding: 20px;
-    border-radius: 10px;
-    max-width: 1000px;  /* Ensure it matches the grid width */
-    width: 100%;
-    margin: 0 auto 30px auto;
-    box-sizing: border-box; /* Ensure padding doesn’t affect width */
-  }
-  
-  .tab {
-    flex: 1;  /* Ensure each tab gets equal space */
-    text-align: center;
-    padding: 15px 0;
-    background-color: #fcc900;
-    color: #FFFFFF;
-    border: none;
-    border-radius: 5px;
-    font-size: 20px;
-    font-weight: 700;
-    cursor: pointer;
-  }
-  
-  .tab.active-tab {
-    background-color: #000;
-    color: #FFFFFF;
-  }
-  
-  .character-grid {
-    display: grid;
-    grid-template-columns: repeat(6, 1fr);  /* 6 characters per row */
-    gap: 20px;
-    width: 100%;
-    max-width: 1000px;  /* Same width as the tab container */
-    justify-items: center;
-    margin: 0 auto;  /* Center the grid */
-    box-sizing: border-box; /* Ensure grid aligns well */
-  }
-  
-  .character-box {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    background-color: #000;
-    color: white;
-    padding-top: 15px;
-    border: 8px solid #fcc900;
-    justify-content: center;
-    border-radius: 5px;
-    width: 130px;
-    height: 130px;
-    text-align: center;
-  }
-  
-  .baybayin-character {
-    font-family: 'BaybayinNeue';
-    font-size: 40px;
-    color: #FFFFFF;
-    margin-bottom: 0px;
-    line-height: 1;
-  }
-  
-  .character-label {
-    font-size: 20px;
-    color: #fcc900;
-  }
-  
-  .category-header {
-    text-align: center;
-    margin-bottom: 15px;
-  }
-  
-  .category-header h2 {
-    font-size: 28px;
-    font-weight: 600;
-    color: #000;
-    margin-bottom: 5px;
-    line-height: 1;
-  }
-  
-  .baybayin-title {
-    font-family: 'BaybayinNeue';
-    font-size: 26px;
-    color: #fcc900;
-    margin-top: 0;
-  }
+  font-family: "BaybayinNeue";
+  src: url("/public/assets/fonts/BaybayinNeue.otf") format("opentype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+.baybayin-character {
+  font-family: "BaybayinNeue";
+}
+
+.character-list-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 40px;
+  margin: 50px auto 0;
+  width: 100%;
+  max-width: 1200px;
+  box-sizing: border-box;
+}
+
+.category-tabs {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  background-color: #fcc900;
+  padding: 20px;
+  border-radius: 10px;
+  max-width: 1000px;
+  width: 100%;
+  margin: 0 auto 30px auto;
+  box-sizing: border-box;
+}
+
+.tab {
+  flex: 1;
+  text-align: center;
+  padding: 15px 0;
+  background-color: #fcc900;
+  color: #ffffff;
+  border: none;
+  border-radius: 5px;
+  font-size: 20px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.tab.active-tab {
+  background-color: #000;
+  color: #ffffff;
+}
+
+.character-grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 20px;
+  width: 100%;
+  max-width: 1000px;
+  justify-items: center;
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+
+.character-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #000;
+  color: white;
+  padding-top: 15px;
+  border: 8px solid #fcc900;
+  justify-content: center;
+  border-radius: 5px;
+  width: 130px;
+  height: 130px;
+  text-align: center;
+}
+
+.baybayin-character {
+  font-family: "BaybayinNeue";
+  font-size: 40px;
+  color: #ffffff;
+  margin-bottom: 0px;
+  line-height: 1;
+}
+
+.character-label {
+  font-size: 20px;
+  color: #fcc900;
+}
+
+.category-header {
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+.category-header h2 {
+  font-size: 28px;
+  font-weight: 600;
+  color: #000;
+  margin-bottom: 5px;
+  line-height: 1;
+}
+
+.baybayin-title {
+  font-family: "BaybayinNeue";
+  font-size: 26px;
+  color: #fcc900;
+  margin-top: 0;
+}
 
 @media (max-width: 970px) {
-	.character-grid {
-	  grid-template-columns: repeat(5, 1fr); /* 5 characters per row */
-	}
-	
-	.character-box {
-		width: 130px; /* Smaller box width */
-		height: 130px;
-	}
+  .character-grid {
+    grid-template-columns: repeat(5, 1fr);
+  }
+  .character-box {
+    width: 130px;
+    height: 130px;
+  }
 }
 
 @media (max-width: 768px) {
-    .character-grid {
-      grid-template-columns: repeat(4, 1fr); /* 3 characters per row */
-    }
-  
-    .tab {
-      font-size: 16px; /* Smaller font size for tabs */
-      padding: 8px 0; /* Adjust padding for compact view */
-    }
-  
-	.character-box {
-		width: 100%; /* Smaller box width */
-		height: auto;
-	}
-  
-    .baybayin-character {
-      font-size: 32px; /* Reduce character size */
-    }
-  
-    .character-label {
-      font-size: 16px; /* Reduce label size */
-    }
+  .character-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+  .tab {
+    font-size: 16px;
+    padding: 8px 0;
+  }
+  .character-box {
+    width: 100%;
+    height: auto;
+  }
+  .baybayin-character {
+    font-size: 32px;
+  }
+  .character-label {
+    font-size: 16px;
+  }
 }
-  
-  /* For small screens (mobile) */
-  @media (max-width: 480px) {
-    .category-tabs {
-      padding: 10px; /* Adjust padding for mobile */
-      gap: 5px; /* Reduce gap between tabs */
-    }
-  
-    .character-grid {
-      grid-template-columns: repeat(3, 1fr); /* 2 characters per row */
-    }
-  
-    .tab {
-      font-size: 14px; /* Smaller font size for mobile */
-      padding: 6px 0; /* Adjust padding */
-    }
-  
-	.character-box {
-		width: 100%; /* Smaller box width */
-		height: 100px;
-	}
-	
-    .baybayin-character {
-      font-size: 28px; /* Further reduce character size */
-    }
-  
-    .character-label {
-      font-size: 14px; /* Further reduce label size */
-    }
+
+@media (max-width: 480px) {
+  .category-tabs {
+    padding: 10px;
+    gap: 5px;
+  }
+  .character-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .tab {
+    font-size: 14px;
+    padding: 6px 0;
+  }
+  .character-box {
+    width: 100%;
+    height: 100px;
+  }
+  .baybayin-character {
+    font-size: 28px;
+  }
+  .character-label {
+    font-size: 14px;
+  }
 }

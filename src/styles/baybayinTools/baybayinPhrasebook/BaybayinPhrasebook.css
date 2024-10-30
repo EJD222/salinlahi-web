@@ -1,159 +1,162 @@
 .baybayin-phrasebook-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin: 50px auto 0;
-    padding: 0 40px; /* Reduced padding for better centering */
-    width: 100%;
-    max-width: 1200px;
-    box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 50px auto 0;
+  padding: 0 40px; 
+  width: 100%;
+  max-width: 1200px;
+  box-sizing: border-box;
 }
 
 .baybayin-phrasebook-container h4 {
-    text-align: start;
+  text-align: start;
 }
 
 .halimbawa-ng-pagsalin-section {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-    border-radius: 10px;
-    background-color: #000000;
-    padding: 20px 40px;
-    width: 100%;
-    max-width: 1200px; /* Set the same max-width */
-    box-sizing: border-box;
-    margin: 0 auto 20px; /* Center it like the grid */
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  border-radius: 10px;
+  background-color: #000000;
+  padding: 20px 40px;
+  width: 100%;
+  max-width: 1200px; 
+  box-sizing: border-box;
+  margin: 0 auto 20px; 
 }
 
 .halimbawa-ng-pagsalin-section img {
-    width: 315px;
-    height: auto;
-    object-fit: contain;
+  width: 315px;
+  height: auto;
+  object-fit: contain;
 }
 
 .halimbawa-ng-pagsalin-section p {
-    font-weight: 700;
-    font-size: 24px;
-    color: #FFFFFF;
+  font-weight: 700;
+  font-size: 24px;
+  color: #ffffff;
 }
 
 .mga-kategorya-container {
-    display: flex;
-    align-items: start;
-    width: 100%;
-    max-width: 1200px;
-    margin: 20px 0;
+  display: flex;
+  align-items: start;
+  width: 100%;
+  max-width: 1200px;
+  margin: 20px 0;
 }
 
 .mga-kategorya {
-    margin: 0;
-    font-weight: 600;
-    text-align: start;
-    width: 100%;
+  margin: 0;
+  font-weight: 600;
+  text-align: start;
+  width: 100%;
 }
 
 .phrasebook-categories-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
-    gap: 20px;
-    width: 100%;
-    max-width: 1200px;
-    justify-items: center;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+  gap: 20px;
+  width: 100%;
+  max-width: 1200px;
+  justify-items: center;
 }
 
 .phrasebook-category-card {
-    background-color: #000000;
-    border: 15px solid #FCC900;
-    border-radius: 5px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding: 20px;
-    width: 201px;
-    height: 201px;
-    box-sizing: border-box;
-    text-align: center;
-    color: white;
+  background-color: #000000;
+  border: 15px solid #fcc900;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  width: 201px;
+  height: 201px;
+  box-sizing: border-box;
+  text-align: center;
+  color: white;
 }
 
 .phrasebook-category-image img {
-    width: 75px;
-    height: 75px;
-    margin-top: 5px;
+  width: 75px;
+  height: 75px;
+  margin-top: 5px;
 }
 
 .phrasebook-category-card-link {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    height: 100%;
-    text-decoration: none;
-    color: inherit;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  text-decoration: none;
+  color: inherit;
 }
 
 .phrasebook-category-card-link h3 {
-    font-size: 22px;
-    font-weight: 700;
-    color: #FFFFFF;
+  font-size: 22px;
+  font-weight: 700;
+  color: #ffffff;
 }
 
 /* Responsive adjustments */
 @media (min-width: 1200px) {
-    .phrasebook-categories-grid {
-        grid-template-columns: repeat(5, 1fr); /* Force 5 columns on large screens */
-    }
+  .phrasebook-categories-grid {
+    grid-template-columns: repeat(
+      5,
+      1fr
+    ); 
+  }
 }
 
 @media (max-width: 768px) {
-    .phrasebook-categories-grid {
-        grid-template-columns: repeat(2, 1fr); /* 2 columns on tablets */
-    }
+  .phrasebook-categories-grid {
+    grid-template-columns: repeat(2, 1fr); 
+  }
 
-    .phrasebook-category-card {
-        width: 100%; /* Smaller width for tablets */
-        height: 200px; /* Smaller height for tablets */
-        padding: 15px; /* Adjust padding */
-      }
+  .phrasebook-category-card {
+    width: 100%; 
+    height: 200px; 
+    padding: 15px; 
+  }
 
-    .halimbawa-ng-pagsalin-section {
-        flex-direction: column;
-        align-items: center;
-        padding: 20px;
-    }
+  .halimbawa-ng-pagsalin-section {
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+  }
 
-    .halimbawa-ng-pagsalin-section p {
-        margin-bottom: 10px; /* Spacing for mobile */
-    }
+  .halimbawa-ng-pagsalin-section p {
+    margin-bottom: 10px; 
+  }
 }
 
 @media (max-width: 470px) {
-    .phrasebook-categories-grid {
-        grid-template-columns: repeat(2, 1fr); /* 2 columns for small screens */
-    }
+  .phrasebook-categories-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
 
-    .child-stepping {
-        width: 100px;
-    }
+  .child-stepping {
+    width: 100px;
+  }
 
-    .phrasebook-category-card {
-        gap: 10px; 
-        width: 100%; /* Full-width for small screens */
-        max-width: 300px; /* Limit max-width to prevent too much stretching */
-        max-height: 180; /* Adjust height to be dynamic */
-        padding: 10px; /* Reduce padding for compact view */
-    }
+  .phrasebook-category-card {
+    gap: 10px;
+    width: 100%;
+    max-width: 300px; 
+    max-height: 180; 
+    padding: 10px;
+  }
 
-    .phrasebook-category-image img {
-        width: 50px; /* Further reduce image size */
-        height: 50px;
-    }
+  .phrasebook-category-image img {
+    width: 50px; 
+    height: 50px;
+  }
 
-    .phrasebook-category-card-link h3 {
-        font-size: 16px; /* Smaller font size */
-    }
+  .phrasebook-category-card-link h3 {
+    font-size: 16px; 
+  }
 }

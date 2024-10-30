@@ -1,4 +1,5 @@
-html, body {
+html,
+body {
   height: 100%;
   margin: 0;
   padding: 0;
@@ -7,18 +8,18 @@ html, body {
 .App {
   display: flex;
   flex-direction: column;
-  min-height: 100vh; 
+  min-height: 100vh;
   width: 100%;
-  font-family: 'Inter', sans-serif;
+  font-family: "Inter", sans-serif;
 }
 
 main {
-  flex: 1; 
+  flex: 1;
 }
 
 @font-face {
-  font-family: 'BaybayinNeue';
-  src: url('/public/assets/fonts/BaybayinNeue.otf') format('opentype'); 
+  font-family: "BaybayinNeue";
+  src: url("/public/assets/fonts/BaybayinNeue.otf") format("opentype");
   font-weight: normal;
   font-style: normal;
 }

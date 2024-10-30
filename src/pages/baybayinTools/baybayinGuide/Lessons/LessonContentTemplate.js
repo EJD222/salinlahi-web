@@ -1,6 +1,6 @@
-import React from 'react';
-import LessonContentBlock from './LessonContentBlock';
-import '../../../../styles/baybayinTools/baybayinGuide/Lessons/LessonContentTemplate.css'
+import React from "react"
+import LessonContentBlock from "./LessonContentBlock"
+import "../../../../styles/baybayinTools/baybayinGuide/Lessons/LessonContentTemplate.css"
 
 const LessonContentTemplate = ({ lessonData, onDropdownInteraction }) => {
   return (
@@ -14,7 +14,7 @@ const LessonContentTemplate = ({ lessonData, onDropdownInteraction }) => {
         />
       ))}
     </div>
-  );
-};
+  )
+}
 
-export default LessonContentTemplate;
+export default LessonContentTemplate

@@ -1,141 +1,141 @@
 @font-face {
-    font-family: 'BaybayinNeue';
-    src: url('/public/assets/fonts/BaybayinNeue.otf') format('opentype');
-    font-weight: normal;
-    font-style: normal;
+  font-family: "BaybayinNeue";
+  src: url("/public/assets/fonts/BaybayinNeue.otf") format("opentype");
+  font-weight: normal;
+  font-style: normal;
 }
 
 .baybayin-guide-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center; /* Center-aligns the container */
-    margin: 50px auto 10px;
-    padding: 0px 40px;
-    max-width: 1200px;
-    width: 100%; /* Ensure it takes up full width of the page */
+  display: flex;
+  flex-direction: column;
+  align-items: center; 
+  margin: 50px auto 10px;
+  padding: 0px 40px;
+  max-width: 1200px;
+  width: 100%; 
 }
 
 .text-details {
-    text-align: left;
-    width: 100%; /* Matches the width of categories-grid */
-    margin-bottom: 20px;
-    max-width: 1200px; /* Optional: Same max-width as categories-grid if required */
+  text-align: left;
+  width: 100%; 
+  margin-bottom: 20px;
+  max-width: 1200px; 
 }
 
 .categories-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 20px;
-    width: 100%;
-    max-width: 1200px; /* Limit grid width to match the desired width */
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  width: 100%;
+  max-width: 1200px;
 }
 
 .category-card {
-    display: flex;
-    flex-direction: column;
-    background-color: #000000;
-    padding: 15px 30px;
-    border-radius: 10px;
-    align-items: start; 
-    justify-content: center;
-    min-height: 250px;
-    height: 100%;
+  display: flex;
+  flex-direction: column;
+  background-color: #000000;
+  padding: 15px 30px;
+  border-radius: 10px;
+  align-items: start;
+  justify-content: center;
+  min-height: 250px;
+  height: 100%;
 }
 
 .category-card-text {
-    display: flex;
-    flex-direction: column;
-    color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  color: #ffffff;
 }
 
 .text-details {
-    display: flex;
-    flex-direction: column;
-    align-items: start;
-    text-align: left;
-    margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  text-align: left;
+  margin-bottom: 20px;
 }
 
 .text-details p {
-    font-size: 36px;
-    line-height: 1;
+  font-size: 36px;
+  line-height: 1;
 }
 
 .text-details h4 {
-    font-weight: 600;
+  font-weight: 600;
 }
 
 .category-text {
-    font-weight: 700;
-    font-size: 20px;
-    line-height: 1.2;
-    text-align: start;
-    color: #ffffff;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 1.2;
+  text-align: start;
+  color: #ffffff;
 }
 
 .baybayin-text {
-    font-family: 'BaybayinNeue';
-    color: #FCC900;
-    font-size: 18px;
-    line-height: 1.2;
-    margin-bottom: 5px;
-    text-align: start;
+  font-family: "BaybayinNeue";
+  color: #fcc900;
+  font-size: 18px;
+  line-height: 1.2;
+  margin-bottom: 5px;
+  text-align: start;
 }
 
 .category-image {
-    display: flex;
-    justify-content: center; 
-    align-items: center; 
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .category-image img {
-    width: 150px;
-    height: auto;
-    object-fit: contain;
-    margin-left: 20px; 
+  width: 150px;
+  height: auto;
+  object-fit: contain;
+  margin-left: 20px;
 }
 
 .category-card:last-child .category-image img {
-    width: 200px; 
+  width: 200px;
 }
 
 .category-card-link {
-    text-decoration: none;
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
-    align-items: center;
+  text-decoration: none;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  align-items: center;
 }
 
 @media (max-width: 768px) {
-    .categories-grid {
-        grid-template-columns: 1fr; 
-    }
+  .categories-grid {
+    grid-template-columns: 1fr;
+  }
 
-    .category-card {
-        flex-direction: column;
-        text-align: center;
-    }
+  .category-card {
+    flex-direction: column;
+    text-align: center;
+  }
 }
 
 @media (max-width: 470px) {
-    .category-card {
-        width: calc(100% - 20px); /* Full width with space on both sides */
+  .category-card {
+    width: calc(100% - 20px);
 
-        margin: 0 auto 10px; /* Center align with vertical spacing */
-        padding: 20px; /* Adjust padding */
-        min-height: 200px; /* Reduce minimum height */
-    }
+    margin: 0 auto 10px; 
+    padding: 20px; 
+    min-height: 200px; 
+  }
 
-    .category-text {
-        font-size: 16px; /* Smaller text size */
-    }
+  .category-text {
+    font-size: 16px; 
+  }
 
-    .baybayin-text {
-        font-size: 14px; /* Smaller Baybayin text */
-    }
+  .baybayin-text {
+    font-size: 14px;
+  }
 
-    .category-image img {
-        width: 90px; /* Further reduce image size for small screens */
-    }
+  .category-image img {
+    width: 90px;
+  }
 }

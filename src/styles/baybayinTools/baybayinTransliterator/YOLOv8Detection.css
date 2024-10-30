@@ -1,60 +1,218 @@
-/* Container styling for YOLOv8 detection */
 .yolov8-container {
-    display: flex;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0px 40px;
+  max-width: 1600px;
+  margin: 50px auto 0px auto;
+  border-radius: 5px;
+}
+
+h2 {
+  font-weight: 700;
+}
+
+.detection-container {
+  display: flex;
+  gap: 30px;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.tabs-container {
+  margin-bottom: 30px;
+}
+
+.custom-tabs .MuiTabs-indicator {
+  background-color: #fcc900;
+}
+
+.custom-tab {
+  color: #000000 !important;
+  font-weight: 700 !important;
+  font-size: 16px !important;
+  font-family: "Inter", "sans-serif" !important;
+}
+
+.custom-tab.Mui-selected {
+  color: #fcc900 !important;
+  font-weight: 700 !important;
+  font-size: 16px !important;
+  font-family: "Inter", "sans-serif" !important;
+}
+
+.camera-section {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.upload-button {
+  display: flex;
+  align-items: center;
+  padding: 10px 15px;
+  background-color: #000000;
+  color: #ffffff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 700;
+  margin-top: 15px;
+}
+
+.upload-button:hover {
+  background-color: #fcc900;
+  color: #ffffff;
+}
+
+.upload-button svg {
+  margin-right: 5px;
+}
+
+.camera-error {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 640px;
+  height: 640px;
+  font-size: 16px;
+  text-align: center;
+}
+
+.camera-error p {
+  font-size: 16px;
+  font-weight: 500;
+  text-align: center;
+  color: #6c6c6c;
+  margin-top: 10px;
+}
+
+.camera-loading {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 640px;
+  height: 640px;
+  color: #fcc900;
+  text-align: center;
+}
+
+.camera-loading p {
+  font-size: 16px;
+  font-weight: 500;
+  text-align: center;
+  color: #6c6c6c;
+  margin-top: 10px;
+}
+
+.video-feed {
+  width: 100%;
+  height: auto;
+}
+
+.image-container {
+  position: relative;
+  width: 100%;
+  max-width: 640px;
+  height: 640px;
+  border: 1px solid black;
+  overflow: hidden;
+}
+
+.uploaded-image {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.placeholder-text {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  color: #999;
+  font-size: 18px;
+}
+
+.upload-placeholder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 16px;
+}
+
+.upload-text {
+  font-size: 16px;
+  font-weight: 500;
+  text-align: center;
+  color: #6c6c6c;
+  margin-top: 10px;
+}
+
+.instructions {
+  max-width: 640px;
+}
+
+.uploaded-image,
+.overlay-canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.loading-overlay {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.8);
+  z-index: 10;
+  color: #fcc900;
+}
+
+.error-text {
+  color: red;
+  margin-top: 10px;
+}
+
+@media (max-width: 768px) {
+  .detection-container {
     flex-direction: column;
-    align-items: center;
-    margin-top: 20px;
-    font-family: Arial, sans-serif;
   }
-  
-  /* Webcam container with canvas overlay */
-  .webcam-container {
+
+  .video-feed,
+  .image-container {
+    width: 100%;
+    height: auto;
+  }
+
+  .image-container {
     position: relative;
-    width: 640px;
-    height: 480px;
-    margin-bottom: 20px;
+    width: 100%;
+    max-width: 640px;
+    aspect-ratio: 1 / 1;
+    border: 1px solid black;
+    overflow: hidden;
   }
-  
-  /* Styling for the webcam feed */
-  .webcam-container video {
-    border-radius: 10px;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
-  }
-  
-  /* Canvas overlay for bounding boxes */
+
+  .uploaded-image,
   .overlay-canvas {
     position: absolute;
     top: 0;
     left: 0;
-    border-radius: 10px;
-    pointer-events: none; /* Makes sure the canvas doesn't interfere with user input */
+    width: 100%;
+    height: 100%;
   }
-  
-  /* Button styling */
-  .detect-btn {
-    padding: 12px 24px;
-    background-color: #ff9800;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    font-size: 16px;
-    font-weight: bold;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-  }
-  
-  .detect-btn:hover {
-    background-color: #e68a00;
-  }
-  
-  .detect-btn:active {
-    background-color: #cc7a00;
-  }
-  
-  /* Loading message styling */
-  p {
-    color: #333;
-    font-size: 18px;
-    margin-top: 10px;
-  }
-  
+}

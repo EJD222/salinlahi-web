@@ -1,49 +1,46 @@
-import React, { useState, useEffect, useRef } from 'react';
-import { Link, useLocation } from 'react-router-dom';
-import '../styles/NavigationBar.css';
-import ReorderIcon from '@mui/icons-material/Reorder';
-import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
-import CloseIcon from '@mui/icons-material/Close';
+import React, { useState, useEffect, useRef } from "react"
+import { Link, useLocation } from "react-router-dom"
+import "../styles/NavigationBar.css"
+import ReorderIcon from "@mui/icons-material/Reorder"
+import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown"
+import CloseIcon from "@mui/icons-material/Close"
 
 function NavigationBar() {
-  
-  const SalinlahiLogo = '/assets/images/logo/salinlahi_logo_1.png';
+  const SalinlahiLogo = "/assets/images/logo/salinlahi_logo_1.png"
 
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [isSubmenuOpen, setIsSubmenuOpen] = useState(false);
-  const menuRef = useRef(null);
-  const location = useLocation();
+  const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const [isSubmenuOpen, setIsSubmenuOpen] = useState(false)
+  const menuRef = useRef(null)
+  const location = useLocation()
 
   const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen);
-    setIsSubmenuOpen(false);
-  };
+    setIsMenuOpen(!isMenuOpen)
+    setIsSubmenuOpen(false)
+  }
 
   const toggleSubmenu = (e) => {
-    e.preventDefault();
-    setIsSubmenuOpen(!isSubmenuOpen);
-  };
+    e.preventDefault()
+    setIsSubmenuOpen(!isSubmenuOpen)
+  }
 
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (menuRef.current && !menuRef.current.contains(event.target)) {
-        setIsSubmenuOpen(false);
-        setIsMenuOpen(false);
+        setIsSubmenuOpen(false)
+        setIsMenuOpen(false)
       }
-    };
+    }
 
-    document.addEventListener('mousedown', handleClickOutside);
+    document.addEventListener("mousedown", handleClickOutside)
     return () => {
-      document.removeEventListener('mousedown', handleClickOutside);
-    };
-  }, []);
+      document.removeEventListener("mousedown", handleClickOutside)
+    }
+  }, [])
 
-  // Check if the current path matches any sub-route under /baybayin-tools
-  const isBaybayinToolsActive = location.pathname.startsWith('/baybayin-tools');
+  const isBaybayinToolsActive = location.pathname.startsWith("/baybayin-tools")
 
   return (
     <div className="navbar">
-      {/* Logo and Title */}
       <div className="logo-and-title">
         <div className="logo-container">
           <img src={SalinlahiLogo} alt="Salinlahi Logo" />
@@ -53,44 +50,79 @@ function NavigationBar() {
         </div>
       </div>
 
-      {/* Menu Options */}
-      <div className={`menu-options ${isMenuOpen ? 'open' : ''}`} ref={menuRef}>
-        {/* Close button for mobile */}
+      <div className={`menu-options ${isMenuOpen ? "open" : ""}`} ref={menuRef}>
         <button className="close-menu" onClick={toggleMenu}>
           <CloseIcon />
         </button>
 
-        <Link to="/" onClick={toggleMenu} className={location.pathname === '/' ? 'active-link' : ''}>
+        <Link
+          to="/"
+          onClick={toggleMenu}
+          className={location.pathname === "/" ? "active-link" : ""}
+        >
           Home
         </Link>
 
-        {/* Baybayin Tools with Dropdown List */}
-        <div className={`menu-item-with-submenu ${isSubmenuOpen ? 'open' : ''} ${isBaybayinToolsActive ? 'current-menu-parent' : ''}`}>
+        <div
+          className={`menu-item-with-submenu ${isSubmenuOpen ? "open" : ""} ${isBaybayinToolsActive ? "current-menu-parent" : ""}`}
+        >
           <span className="menu-link" onClick={toggleSubmenu}>
             Baybayin Tools
             <ArrowDropDownIcon className="submenu-toggle" />
           </span>
 
-          {/* Submenu List */}
           {isSubmenuOpen && (
             <ul className="submenu-list">
               <li>
-                <Link to="/baybayin-tools/baybayin-guide" onClick={toggleMenu} className={location.pathname === '/baybayin-tools/baybayin-guide' ? 'active-link' : ''}>
+                <Link
+                  to="/baybayin-tools/baybayin-guide"
+                  onClick={toggleMenu}
+                  className={
+                    location.pathname === "/baybayin-tools/baybayin-guide"
+                      ? "active-link"
+                      : ""
+                  }
+                >
                   Baybayin Guide
                 </Link>
               </li>
               <li>
-                <Link to="/baybayin-tools/baybayin-phrasebook" onClick={toggleMenu} className={location.pathname === '/baybayin-tools/baybayin-phrasebook' ? 'active-link' : ''}>
+                <Link
+                  to="/baybayin-tools/baybayin-phrasebook"
+                  onClick={toggleMenu}
+                  className={
+                    location.pathname === "/baybayin-tools/baybayin-phrasebook"
+                      ? "active-link"
+                      : ""
+                  }
+                >
                   Baybayin Phrasebook
                 </Link>
               </li>
               <li>
-                <Link to="/baybayin-tools/baybayin-characters" onClick={toggleMenu} className={location.pathname === '/baybayin-tools/baybayin-characters' ? 'active-link' : ''}>
+                <Link
+                  to="/baybayin-tools/baybayin-characters"
+                  onClick={toggleMenu}
+                  className={
+                    location.pathname === "/baybayin-tools/baybayin-characters"
+                      ? "active-link"
+                      : ""
+                  }
+                >
                   Baybayin Characters
                 </Link>
               </li>
               <li>
-                <Link to="/baybayin-tools/baybayin-transliterator" onClick={toggleMenu} className={location.pathname === '/baybayin-tools/baybayin-transliterator' ? 'active-link' : ''}>
+                <Link
+                  to="/baybayin-tools/baybayin-transliterator"
+                  onClick={toggleMenu}
+                  className={
+                    location.pathname ===
+                    "/baybayin-tools/baybayin-transliterator"
+                      ? "active-link"
+                      : ""
+                  }
+                >
                   Baybayin Transliterator
                 </Link>
               </li>
@@ -98,20 +130,27 @@ function NavigationBar() {
           )}
         </div>
 
-        <Link to="/about" onClick={toggleMenu} className={location.pathname === '/about' ? 'active-link' : ''}>
+        <Link
+          to="/about"
+          onClick={toggleMenu}
+          className={location.pathname === "/about" ? "active-link" : ""}
+        >
           About
         </Link>
-        <Link to="/contact" onClick={toggleMenu} className={location.pathname === '/contact' ? 'active-link' : ''}>
+        <Link
+          to="/contact"
+          onClick={toggleMenu}
+          className={location.pathname === "/contact" ? "active-link" : ""}
+        >
           Contact
         </Link>
       </div>
 
-      {/* Menu Toggle Button for Mobile */}
       <button className="menu-toggle" onClick={toggleMenu}>
         <ReorderIcon />
       </button>
     </div>
-  );
+  )
 }
 
-export default NavigationBar;
+export default NavigationBar

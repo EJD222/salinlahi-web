@@ -1,38 +1,38 @@
 .not-found-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 80vh;
-    text-align: center;
-    background-color: #f4f4f4;
-    padding: 0px 40px;
-    margin: 50px auto 0px auto;
-  }
-  
-  .not-found-title {
-    font-size: 4rem;
-    color: #FCC900;
-    margin-bottom: 20px;
-  }
-  
-  .not-found-text {
-    font-size: 1.5rem;
-    color: #6C6C6C;
-    margin-bottom: 30px;
-  }
-  
-  .not-found-link {
-    font-size: 1.2rem;
-    color: #fff;
-    background-color: #000000;
-    padding: 10px 20px;
-    text-decoration: none;
-    border-radius: 5px;
-    transition: background-color 0.3s;
-  }
-  
-  .not-found-link:hover {
-    background-color: #6C6C6C;
-  }
-  
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 80vh;
+  text-align: center;
+  background-color: #F4F4F4;
+  padding: 0px 40px;
+  margin: 50px auto 0px auto;
+}
+
+.not-found-title {
+  font-size: 4rem;
+  color: #FCC900;
+  margin-bottom: 20px;
+}
+
+.not-found-text {
+  font-size: 1.5rem;
+  color: #000000;
+  margin-bottom: 30px;
+}
+
+.not-found-link {
+  font-size: 16px;
+  color: #fff;
+  background-color: #000000;
+  padding: 10px 20px;
+  text-decoration: none;
+  border-radius: 5px;
+  transition: background-color 0.3s;
+  font-weight: 700;
+}
+
+.not-found-link:hover {
+  background-color: #FCC900;
+}

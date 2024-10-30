@@ -1,149 +1,154 @@
 @font-face {
-    font-family: 'BaybayinNeue';
-    src: url('/public/assets/fonts/BaybayinNeue.otf') format('opentype');
-    font-weight: normal;
-    font-style: normal;
+  font-family: "BaybayinNeue";
+  src: url("/public/assets/fonts/BaybayinNeue.otf") format("opentype");
+  font-weight: normal;
+  font-style: normal;
 }
 
 .phrase-list-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin: 50px auto 20px; 
-    padding: 40px;
-    width: 100%;
-    box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 50px auto 20px;
+  padding: 40px;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .flashcard-navigation-wrapper {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 20px; /* Add space between buttons and the flashcard */
-    width: 100%; /* Ensure it takes full width */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px; 
+  width: 100%; 
 }
 
 .flashcard-container {
-    background-color: #000000;
-    border-radius: 15px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    max-width: 900px; /* Max width for larger screens */
-    height: 525px; /* Fixed height */
-    padding: 20px;
-    box-sizing: border-box;
+  background-color: #000000;
+  border-radius: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  max-width: 900px; 
+  height: 525px; 
+  padding: 20px;
+  box-sizing: border-box;
 }
 
 .phrase-item {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center; /* Ensure text is centered */
-    text-align: center;
-    color: white;
-    width: 100%;
-    height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center; 
+  text-align: center;
+  color: white;
+  width: 100%;
+  height: 100%;
 }
 
-.latin-script, .baybayin-script {
-    font-size: 26px;
-    margin: 0;
-    word-wrap: break-word; /* Ensure long text wraps */
-    color: #FFFFFF;
+.latin-script,
+.baybayin-script {
+  font-size: 26px;
+  margin: 0;
+  word-wrap: break-word;
+  color: #ffffff;
 }
 
 .baybayin-script {
-    font-family: 'BaybayinNeue';
-    color: #FCC900;
+  font-family: "BaybayinNeue";
+  color: #fcc900;
 }
 
-.prev-btn, .next-btn {
-    color: #FCC900;
-    background: none;
-    border: none;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    font-size: 2.2rem;
+.prev-btn,
+.next-btn {
+  color: #fcc900;
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  font-size: 2.2rem;
 }
 
-.selected-category-title{
-    font-size: 28px;
-    font-weight: 700;
-    color: #000000;
+.selected-category-title {
+  font-size: 28px;
+  font-weight: 700;
+  color: #000000;
 }
 
-.prev-btn:hover, .next-btn:hover {
-    color: #000000;
+.prev-btn:hover,
+.next-btn:hover {
+  color: #000000;
 }
 
 .dot-indicator {
-    display: flex;
-    justify-content: center;
-    margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
 }
 
 .dot {
-    height: 10px;
-    width: 10px;
-    background-color: #000000;
-    border-radius: 50%;
-    display: inline-block;
-    margin: 0 5px;
+  height: 10px;
+  width: 10px;
+  background-color: #000000;
+  border-radius: 50%;
+  display: inline-block;
+  margin: 0 5px;
 }
 
 .dot.active {
-    background-color: #FCC900;
+  background-color: #fcc900;
 }
 
-/* Responsive Adjustments */
 @media (max-width: 1200px) {
-    .flashcard-container {
-        max-width: 700px; /* Adjust width for medium screens */
-        height: 400px; /* Adjust height */
-    }
+  .flashcard-container {
+    max-width: 700px; 
+    height: 400px; 
+  }
 
-    .latin-script, .baybayin-script {
-        font-size: 24px;
-    }
+  .latin-script,
+  .baybayin-script {
+    font-size: 24px;
+  }
 }
 
 @media (max-width: 768px) {
-    .flashcard-container {
-        max-width: 600px; /* Adjust width for smaller screens */
-        height: 300px;
-    }
+  .flashcard-container {
+    max-width: 600px; 
+    height: 300px;
+  }
 
-    .latin-script, .baybayin-script {
-        font-size: 20px;
-    }
+  .latin-script,
+  .baybayin-script {
+    font-size: 20px;
+  }
 
-    .prev-btn, .next-btn {
-        font-size: 1.5rem;
-    }
+  .prev-btn,
+  .next-btn {
+    font-size: 1.5rem;
+  }
 }
 
 @media (max-width: 480px) {
-    .flashcard-container {
-        max-width: 100%;
-        height: 350px;
-    }
+  .flashcard-container {
+    max-width: 100%;
+    height: 350px;
+  }
 
-    .latin-script, .baybayin-script {
-        font-size: 18px;
-    }
+  .latin-script,
+  .baybayin-script {
+    font-size: 18px;
+  }
 }
 
-/* Hide arrows on mobile screens */
 @media (max-width: 768px) {
-    .hide-on-mobile {
-        display: none; /* Hide previous and next arrows on small screens */
-    }
+  .hide-on-mobile {
+    display: none; 
+  }
 
-    .flashcard-container {
-        max-width: 700px;
-        height: 500px;
-    }
+  .flashcard-container {
+    max-width: 700px;
+    height: 500px;
+  }
 }

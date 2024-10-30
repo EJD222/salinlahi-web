@@ -1,6 +1,6 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import '../styles/NotFound.css'; 
+import React from "react"
+import { Link } from "react-router-dom"
+import "../styles/NotFound.css"
 
 const NotFound = () => {
   return (
@@ -13,7 +13,7 @@ const NotFound = () => {
         Go back to Home
       </Link>
     </div>
-  );
-};
+  )
+}
 
-export default NotFound;
+export default NotFound

@@ -1,119 +1,119 @@
 .lesson-list-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center; /* Centers the entire container horizontally */
-    margin: 50px auto 0px; 
-    padding: 0px 40px;
-    max-width: 1200px; /* Limit maximum width */
-    width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 50px auto 0px;
+  padding: 0px 40px;
+  max-width: 1200px;
+  width: 100%;
 }
 
 .lesson-header,
 .lesson-list,
 .mga-aralin {
-    width: 100%; /* Full width within limited container */
+  width: 100%;
 }
 
 .lesson-header {
-    background-color: #FCC900;
-    display: flex;
-    align-items: center;
-    padding: 50px;
-    border-radius: 15px;
-    box-sizing: border-box;
+  background-color: #fcc900;
+  display: flex;
+  align-items: center;
+  padding: 50px;
+  border-radius: 15px;
+  box-sizing: border-box;
 }
 
 .lesson-header img {
-    width: 200px;
-    height: auto;
-    object-fit: contain;
+  width: 200px;
+  height: auto;
+  object-fit: contain;
 }
 
 .lesson-text {
-    flex-grow: 1;
+  flex-grow: 1;
 }
 
 .category-text-2 {
-    font-weight: 700;
-    line-height: 1.2;
-    text-align: start;
+  font-weight: 700;
+  line-height: 1.2;
+  text-align: start;
 }
 
 .baybayin-text-2 {
-    font-family: 'BaybayinNeue';
-    color: #FFFFFF;
-    font-size: 22px;
-    line-height: 1.2;
-    margin-bottom: 5px;
-    text-align: start;
+  font-family: "BaybayinNeue";
+  color: #ffffff;
+  font-size: 22px;
+  line-height: 1.2;
+  margin-bottom: 5px;
+  text-align: start;
 }
 
 .mga-aralin {
-    margin-top: 30px;
-    font-weight: 600;
-    text-align: left; /* Aligns "Mga Aralin" to the left */
+  margin-top: 30px;
+  font-weight: 600;
+  text-align: left;
 }
 
 .lesson-list {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
 }
 
 .lesson-item {
-    display: flex;
-    align-items: center;
-    padding: 15px;
-    border-radius: 10px;
-    margin-bottom: -5px;
+  display: flex;
+  align-items: center;
+  padding: 15px;
+  border-radius: 10px;
+  margin-bottom: -5px;
 }
 
 .lesson-number {
-    background-color: #000000;
-    color: #FCC900;
-    padding: 10px;
-    width: 60px;
-    text-align: center;
-    border-radius: 5px;
+  background-color: #000000;
+  color: #fcc900;
+  padding: 10px;
+  width: 60px;
+  text-align: center;
+  border-radius: 5px;
 }
 
 .lesson-title {
-    flex-grow: 1;
-    padding-left: 15px;
-    color: #FFFFFF;
-    font-weight: 600;
-    text-align: left;
-    background-color: #000000;
-    padding: 15px;
-    border-radius: 5px;
-    margin-left: 30px;
-    font-size: 18px;
+  flex-grow: 1;
+  padding-left: 15px;
+  color: #ffffff;
+  font-weight: 600;
+  text-align: left;
+  background-color: #000000;
+  padding: 15px;
+  border-radius: 5px;
+  margin-left: 30px;
+  font-size: 18px;
 }
 
 .lesson-item-link {
-    text-decoration: none;
+  text-decoration: none;
 }
 
 .lesson-title:hover {
-    color: #FCC900;
+  color: #fcc900;
 }
 
 .lesson-title a {
-    color: inherit; 
-    text-decoration: none;
+  color: inherit;
+  text-decoration: none;
 }
 
 @media (max-width: 768px) {
-    .lesson-header {
-        flex-direction: column;
-        text-align: center;
-    }
+  .lesson-header {
+    flex-direction: column;
+    text-align: center;
+  }
 
-    .lesson-number {
-        width: 50px;
-    }
+  .lesson-number {
+    width: 50px;
+  }
 
-    .lesson-title {
-        padding-left: 10px;
-    }
+  .lesson-title {
+    padding-left: 10px;
+  }
 }

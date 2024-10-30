@@ -1,11 +1,11 @@
 .footer-container {
-    background-color: #000000;
-    color: #ffffff;
-    padding: 35px 35px 20px 35px; 
-    text-align: center;
-    display: flex;
-    justify-content: center;
-    margin-top: 50px;
+  background-color: #000000;
+  color: #ffffff;
+  padding: 35px 35px 20px 35px;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  margin-top: 50px;
 }
 
 .footer-inner {
@@ -36,10 +36,10 @@
 }
 
 h3 {
-    color: #FCC900;
-    font-size: 16px;
-    font-weight: 700;
-    margin-bottom: 8px;
+  color: #fcc900;
+  font-size: 16px;
+  font-weight: 700;
+  margin-bottom: 8px;
 }
 
 .footer-text,
@@ -64,7 +64,7 @@ h3 {
 }
 
 .social-icon {
-  color: #FCC900;
+  color: #fcc900;
   font-size: 18px;
   transition: color 0.3s ease;
 }
@@ -82,24 +82,24 @@ h3 {
 }
 
 .salinlahi {
-  color: #FCC900;
+  color: #fcc900;
   font-weight: bold;
 }
 
 .project-link {
-  color: #FCC900;
+  color: #fcc900;
   text-decoration: underline;
 }
 
 @font-face {
-    font-family: 'Deutsch';
-    src: url('/public/assets/fonts/Deutsch.ttf') format('truetype');
-    font-weight: normal;
-    font-style: normal;
+  font-family: "Deutsch";
+  src: url("/public/assets/fonts/Deutsch.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
 }
-  
+
 .logo-name {
-    font-family: 'Deutsch';
-    color: #FCC900;
-    letter-spacing: 0.25px;
+  font-family: "Deutsch";
+  color: #fcc900;
+  letter-spacing: 0.25px;
 }
