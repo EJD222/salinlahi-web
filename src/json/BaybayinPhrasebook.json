@@ -7,23 +7,23 @@
     "phrases": [
       {
         "phraseInLatinScript": "Magandang umaga!",
-        "phraseInBaybayin": "magandang umaga!"
+        "phraseInBaybayin": "magandang umaga."
       },
       {
         "phraseInLatinScript": "Magandang hapon!",
-        "phraseInBaybayin": "magandang hapon!"
+        "phraseInBaybayin": "magandang hapon."
       },
       {
         "phraseInLatinScript": "Magandang gabi!",
-        "phraseInBaybayin": "magandang gabi!"
+        "phraseInBaybayin": "magandang gabi."
       },
       {
         "phraseInLatinScript": "Ano ang iyong pangalan?",
-        "phraseInBaybayin": "ano ang iyong pangalan?"
+        "phraseInBaybayin": "ano ang iyong pangalan."
       },
       {
-        "phraseInLatinScript": "Mag-ingat ka.",
-        "phraseInBaybayin": "mag-ingat ka."
+        "phraseInLatinScript": "Magandang araw!",
+        "phraseInBaybayin": "magandang araw."
       }
     ]
   },
@@ -35,15 +35,15 @@
     "phrases": [
       {
         "phraseInLatinScript": "Saan ang simbahan?",
-        "phraseInBaybayin": "saan ang simbahan?"
+        "phraseInBaybayin": "saan ang simbahan."
       },
       {
         "phraseInLatinScript": "Paano ako makakarating doon?",
-        "phraseInBaybayin": "paano ako makakarating doon?"
+        "phraseInBaybayin": "paano ako makakarating doon."
       },
       {
         "phraseInLatinScript": "Gaano kalayo ang paaralan mula rito?",
-        "phraseInBaybayin": "Gaano kalayo ang paaralan mula rito?"
+        "phraseInBaybayin": "Gaano kalayo ang paaralan mula rito."
       },
       {
         "phraseInLatinScript": "Kumaliwa ka.",
@@ -63,23 +63,23 @@
     "phrases": [
       {
         "phraseInLatinScript": "Tulong!",
-        "phraseInBaybayin": "tulong!"
+        "phraseInBaybayin": "tulong."
       },
       {
         "phraseInLatinScript": "Nasaan ang ospital?",
-        "phraseInBaybayin": "nasaan ang ospital?"
+        "phraseInBaybayin": "nasaan ang ospital."
       },
       {
         "phraseInLatinScript": "May sunog!",
-        "phraseInBaybayin": "may sunog!"
+        "phraseInBaybayin": "may sunog."
       },
       {
         "phraseInLatinScript": "Tumawag kayo ng doktor!",
-        "phraseInBaybayin": "tumawag kayo nang doktor!"
+        "phraseInBaybayin": "tumawag kayo nang doktor."
       },
       {
         "phraseInLatinScript": "Saan ang pinakamalapit na istasyon ng pulisya?",
-        "phraseInBaybayin": "saan ang pinakamalapit na istasyon nang pulisya?"
+        "phraseInBaybayin": "saan ang pinakamalapit na istasyon nang pulisya."
       }
     ]
   },
@@ -91,19 +91,19 @@
     "phrases": [
       {
         "phraseInLatinScript": "Maraming salamat!",
-        "phraseInBaybayin": "maraming salamat!"
+        "phraseInBaybayin": "maraming salamat."
       },
       {
-        "phraseInLatinScript": "Hindi ko maintindihan",
-        "phraseInBaybayin": "hindi ko maintindihan"
+        "phraseInLatinScript": "Hindi ko maintindihan.",
+        "phraseInBaybayin": "hindi ko maintindihan."
       },
       {
-        "phraseInLatinScript": "Ipagpaumanhin mo",
-        "phraseInBaybayin": "ipagpaumanhin mo"
+        "phraseInLatinScript": "Ipagpaumanhin mo.",
+        "phraseInBaybayin": "ipagpaumanhin mo."
       },
       {
         "phraseInLatinScript": "Magkano po ito?",
-        "phraseInBaybayin": "magkano po ito?"
+        "phraseInBaybayin": "magkano po ito."
       },
       {
         "phraseInLatinScript": "Walang anuman.",
@@ -119,7 +119,7 @@
     "phrases": [
       {
         "phraseInLatinScript": "Maligayang kaarawan!",
-        "phraseInBaybayin": "maligayang kaarawan!"
+        "phraseInBaybayin": "maligayang kaarawan."
       },
       {
         "phraseInLatinScript": "Ako ay nakikiramay.",
@@ -127,15 +127,15 @@
       },
       {
         "phraseInLatinScript": "Maligayang pasko!",
-        "phraseInBaybayin": "maligayang pasko!"
+        "phraseInBaybayin": "maligayang pasko."
       },
       {
         "phraseInLatinScript": "Binabati kita!",
-        "phraseInBaybayin": "binabati kita!"
+        "phraseInBaybayin": "binabati kita."
       },
       {
         "phraseInLatinScript": "Manigong bagong taon!",
-        "phraseInBaybayin": "Manigong bagong taon!"
+        "phraseInBaybayin": "Manigong bagong taon."
       }
     ]
   },
@@ -159,11 +159,11 @@
       },
       {
         "phraseInLatinScript": "Saan tayo kakain?",
-        "phraseInBaybayin": "saan tayo kakain?"
+        "phraseInBaybayin": "saan tayo kakain."
       },
       {
         "phraseInLatinScript": "Ang sarap!",
-        "phraseInBaybayin": "ang sarap!"
+        "phraseInBaybayin": "ang sarap."
       }
     ]
   }

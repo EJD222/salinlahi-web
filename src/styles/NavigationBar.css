@@ -17,6 +17,14 @@
   padding-right: 150px;
 }
 
+.menu-link {
+  cursor: pointer; 
+}
+
+.logo-and-title {
+  cursor: pointer;
+}
+
 .logo-and-title {
   display: flex;
   align-items: center;

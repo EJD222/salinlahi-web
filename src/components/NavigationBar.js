@@ -1,47 +1,54 @@
-import React, { useState, useEffect, useRef } from "react"
-import { Link, useLocation } from "react-router-dom"
-import "../styles/NavigationBar.css"
-import ReorderIcon from "@mui/icons-material/Reorder"
-import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown"
-import CloseIcon from "@mui/icons-material/Close"
+import React, { useState, useEffect, useRef } from "react";
+import { Link, useLocation, useNavigate } from "react-router-dom"; // Import useNavigate
+import "../styles/NavigationBar.css";
+import ReorderIcon from "@mui/icons-material/Reorder";
+import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
+import CloseIcon from "@mui/icons-material/Close";
 
 function NavigationBar() {
-  const SalinlahiLogo = "/assets/images/logo/salinlahi_logo_1.png"
+  const SalinlahiLogo = "/assets/images/logo/salinlahi_logo_1.png";
 
-  const [isMenuOpen, setIsMenuOpen] = useState(false)
-  const [isSubmenuOpen, setIsSubmenuOpen] = useState(false)
-  const menuRef = useRef(null)
-  const location = useLocation()
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isSubmenuOpen, setIsSubmenuOpen] = useState(false);
+  const menuRef = useRef(null);
+  const location = useLocation();
+  const navigate = useNavigate(); // Initialize useNavigate
 
   const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen)
-    setIsSubmenuOpen(false)
-  }
+    setIsMenuOpen(!isMenuOpen);
+    setIsSubmenuOpen(false);
+  };
 
   const toggleSubmenu = (e) => {
-    e.preventDefault()
-    setIsSubmenuOpen(!isSubmenuOpen)
-  }
+    e.preventDefault();
+    setIsSubmenuOpen(!isSubmenuOpen);
+  };
 
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (menuRef.current && !menuRef.current.contains(event.target)) {
-        setIsSubmenuOpen(false)
-        setIsMenuOpen(false)
+        setIsSubmenuOpen(false);
+        setIsMenuOpen(false);
       }
-    }
+    };
 
-    document.addEventListener("mousedown", handleClickOutside)
+    document.addEventListener("mousedown", handleClickOutside);
     return () => {
-      document.removeEventListener("mousedown", handleClickOutside)
-    }
-  }, [])
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
 
-  const isBaybayinToolsActive = location.pathname.startsWith("/baybayin-tools")
+  const isBaybayinToolsActive = location.pathname.startsWith("/baybayin-tools");
+
+  // Handler to navigate to the home page
+  const handleLogoClick = () => {
+    navigate("/");
+  };
 
   return (
     <div className="navbar">
-      <div className="logo-and-title">
+      {/* Logo and Title */}
+      <div className="logo-and-title" onClick={handleLogoClick}>
         <div className="logo-container">
           <img src={SalinlahiLogo} alt="Salinlahi Logo" />
         </div>
@@ -50,6 +57,7 @@ function NavigationBar() {
         </div>
       </div>
 
+      {/* Menu Options */}
       <div className={`menu-options ${isMenuOpen ? "open" : ""}`} ref={menuRef}>
         <button className="close-menu" onClick={toggleMenu}>
           <CloseIcon />
@@ -64,7 +72,9 @@ function NavigationBar() {
         </Link>
 
         <div
-          className={`menu-item-with-submenu ${isSubmenuOpen ? "open" : ""} ${isBaybayinToolsActive ? "current-menu-parent" : ""}`}
+          className={`menu-item-with-submenu ${isSubmenuOpen ? "open" : ""} ${
+            isBaybayinToolsActive ? "current-menu-parent" : ""
+          }`}
         >
           <span className="menu-link" onClick={toggleSubmenu}>
             Baybayin Tools
@@ -117,8 +127,7 @@ function NavigationBar() {
                   to="/baybayin-tools/baybayin-transliterator"
                   onClick={toggleMenu}
                   className={
-                    location.pathname ===
-                    "/baybayin-tools/baybayin-transliterator"
+                    location.pathname === "/baybayin-tools/baybayin-transliterator"
                       ? "active-link"
                       : ""
                   }
@@ -150,7 +159,7 @@ function NavigationBar() {
         <ReorderIcon />
       </button>
     </div>
-  )
+  );
 }
 
-export default NavigationBar
+export default NavigationBar;
