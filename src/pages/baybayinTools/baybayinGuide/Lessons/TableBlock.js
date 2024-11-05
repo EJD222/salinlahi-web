@@ -36,18 +36,18 @@ const TableBlock = ({ block }) => {
 
   const getDisplayText = (cell, rowIndex, columnIndex) => {
     if (
-      rowIndex >= 1 &&
-      ((block.type === "table_1" && columnIndex === 1) ||
-        (block.type === "table_4" &&
-          (columnIndex === 1 || columnIndex === 3)) ||
-        (block.type === "table_3" && columnIndex === 2) ||
-        (block.type === "table_5" && columnIndex === 1))
+      (block.type === "table_4" && (columnIndex === 1 || columnIndex === 3)) ||
+      (rowIndex >= 1 && (
+        (block.type === "table_1" && columnIndex === 1) ||
+        (block.type === "table_3" && columnIndex === 2) //||
+        //(block.type === "table_5" && columnIndex === 1)
+      ))
     ) {
-      return mapToBaybayinCustomFont(cell)
+      return mapToBaybayinCustomFont(cell);
     }
-    return cell
+    return cell;
   }
-
+  
   const determineCellPadding = (rowIndex, columnIndex) => {
     if (
       (rowIndex >= 1 && block.type === "table_1" && columnIndex === 1) ||

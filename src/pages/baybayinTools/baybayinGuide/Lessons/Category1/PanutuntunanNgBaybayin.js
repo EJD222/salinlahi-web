@@ -249,7 +249,7 @@ const PanutuntunanNgBaybayin = ({ lessonTitle }) => {
               },
               {
                 type: "table_5",
-                tableData: [["K A P A Y A P A A N", "kapayapaan"]],
+                tableData: [["K A P A Y A P A A N", "KAPAyAPAAN"]],
               },
               {
                 type: "question_with_line",
@@ -319,10 +319,10 @@ const PanutuntunanNgBaybayin = ({ lessonTitle }) => {
               },
               {
                 type: "text_2",
-                text: "Pi(yu)pi - Ang nasa loob ng parentheses ay ang tinatawag na kudlit.",
+                text: "Pi[yu]pi - Ang nasa loob ng parentheses ay ang tinatawag na kudlit.",
                 baybayinWords: {
                   Pi: "Pi",
-                  yu: "yu",
+                  yu: "(yu)",
                   pi: "pi",
                 },
               },
