@@ -2,13 +2,13 @@ import React, { useContext, useEffect } from "react"
 import LessonContext from "../LessonContext"
 import LessonContentTemplate from "../LessonContentTemplate"
 
-const AnoNgaBaAngAbugida = () => {
+const AnoNgaBaAngAlibata = () => {
   const { state, dispatch } = useContext(LessonContext)
 
   useEffect(() => {
     dispatch({ type: "LOAD_LESSON" })
     const lessonData = {
-      title: "Ano Nga Ba Ang Abugida?",
+      title: "Ano Nga Ba Ang Alibata?",
       contentBlocks: [
         { type: "text_with_line", text: "Alibata", boldWords: ["Alibata"] },
         {
@@ -61,4 +61,4 @@ const AnoNgaBaAngAbugida = () => {
   )
 }
 
-export default AnoNgaBaAngAbugida
+export default AnoNgaBaAngAlibata
