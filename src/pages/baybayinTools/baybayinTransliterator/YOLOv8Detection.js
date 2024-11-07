@@ -75,6 +75,7 @@ const customLabels = [
 
 const YOLOv8Detection = () => {
   const [loading, setLoading] = useState(false)
+  const [fileLoading, setFileLoading] = useState(false); 
   const [error, setError] = useState(null)
   const [originalImg, setOriginalImg] = useState(null)
   const [tabIndex, setTabIndex] = useState(0)
@@ -101,66 +102,76 @@ const YOLOv8Detection = () => {
 
   const handleTabChange = (event, newValue) => {
     setTabIndex(newValue)
-    clearCanvas() 
+    clearCanvas()
+    setError(null)  
   }
 
   const handleImageUpload = async (event) => {
-    const file = event.target.files[0]
-    if (!file) return
+    const file = event.target.files[0];
+    if (!file) return;
 
-    clearCanvas()
-    setLoading(true)
-    setError(null)
+    if (!file.type.startsWith("image/")) {
+      setError("Invalid file type. Please upload an image.");
+      return;
+    }
+
+    clearCanvas();
+    setError(null);
+    setFileLoading(true); // Start file loading
 
     try {
-      const img = new Image()
-      img.src = URL.createObjectURL(file)
+      const img = new Image();
+      img.src = URL.createObjectURL(file);
 
       img.onload = async () => {
-        setOriginalImg(img)
+        setOriginalImg(img);
 
-        const { inputTensor, scaleFactor, offsetX, offsetY } =
-          preprocessImage(img)
+        const { inputTensor, scaleFactor, offsetX, offsetY } = preprocessImage(img);
+        const output = await runModel(inputTensor);
 
-        const output = await runModel(inputTensor)
-
-        drawDetections(output, img, scaleFactor, offsetX, offsetY)
-      }
+        drawDetections(output, img, scaleFactor, offsetX, offsetY);
+      };
     } catch (err) {
-      setError(`Error: ${err.message}`)
-      console.error("Error during detection:", err)
+      setError(`Error: ${err.message}`);
+      console.error("Error during detection:", err);
     } finally {
-      setLoading(false)
+      setFileLoading(false); // End file loading
     }
   }
 
   const captureImage = async () => {
-    const webcam = webcamRef.current
-    if (!webcam) return
+    const webcam = webcamRef.current;
+    if (!webcam) return;
 
-    clearCanvas()
+    clearCanvas();
+    setCameraLoading(true); // Start camera loading
 
-    const imageSrc = webcam.getScreenshot() 
-    const img = new Image()
-    img.src = imageSrc
+    try {
+      const imageSrc = webcam.getScreenshot();
+      const img = new Image();
+      img.src = imageSrc;
 
-    img.onload = async () => {
-      setOriginalImg(img)
+      img.onload = async () => {
+        setOriginalImg(img);
 
-      const { inputTensor, scaleFactor, offsetX, offsetY } =
-        preprocessImage(img)
+        const { inputTensor, scaleFactor, offsetX, offsetY } = preprocessImage(img);
+        const output = await runModel(inputTensor);
 
-      const output = await runModel(inputTensor)
-
-      drawDetections(output, img, scaleFactor, offsetX, offsetY)
+        drawDetections(output, img, scaleFactor, offsetX, offsetY);
+      };
+    } catch (err) {
+      setError("Error: Could not process the camera image.");
+      console.error("Error during camera capture:", err);
+    } finally {
+      setCameraLoading(false); // End camera loading
     }
   }
 
   const clearCanvas = () => {
-    const canvas = canvasRef.current
-    const ctx = canvas.getContext("2d")
-    ctx.clearRect(0, 0, canvas.width, canvas.height)
-    setOriginalImg(null)
+    const canvas = canvasRef.current;
+    const ctx = canvas.getContext("2d");
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    setOriginalImg(null);
   }
 
   const preprocessImage = (img) => {
@@ -349,44 +360,40 @@ const YOLOv8Detection = () => {
 
         <div>
           <div className="image-container">
-            {loading ? (
+            {loading && (
               <div className="loading-overlay">
                 <CircularProgress style={{ color: "#FCC900" }} />
               </div>
+            )}
+            
+            {originalImg ? (
+              <img
+                src={originalImg.src}
+                ref={imgRef}
+                alt="Uploaded"
+                className="uploaded-image"
+              />
             ) : (
-              <>
-                {!originalImg && (
-                  <div className="placeholder-text">
-                    {tabIndex === 0 && (
-                      <div className="upload-placeholder">
-                        <ImageIcon
-                          style={{ fontSize: "48px", color: "#FCC900" }}
-                        />
-                        <p className="upload-text">Select an image to upload</p>
-                      </div>
-                    )}
-                    {tabIndex === 1 && (
-                      <div className="upload-placeholder">
-                        <PhotoCamera
-                          style={{ fontSize: "48px", color: "#FCC900" }}
-                        />
-                        <p className="upload-text">Capture from camera</p>
-                      </div>
-                    )}
+              <div className="placeholder-text">
+                {tabIndex === 0 ? (
+                  <div className="upload-placeholder">
+                    <ImageIcon
+                      style={{ fontSize: "48px", color: "#FCC900" }}
+                    />
+                    <p className="upload-text">Select an image to upload</p>
+                  </div>
+                ) : (
+                  <div className="upload-placeholder">
+                    <PhotoCamera
+                      style={{ fontSize: "48px", color: "#FCC900" }}
+                    />
+                    <p className="upload-text">Capture from camera</p>
                   </div>
                 )}
-
-                {originalImg && (
-                  <img
-                    src={originalImg.src}
-                    ref={imgRef}
-                    alt="Uploaded"
-                    className="uploaded-image"
-                  />
-                )}
-                <canvas ref={canvasRef} className="overlay-canvas" />
-              </>
+              </div>
             )}
+            
+            <canvas ref={canvasRef} className="overlay-canvas" />
           </div>
 
           <p className="instructions">
