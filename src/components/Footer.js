@@ -3,18 +3,28 @@ import "../styles/Footer.css"
 import FacebookIcon from "@mui/icons-material/Facebook"
 import InstagramIcon from "@mui/icons-material/Instagram"
 import EmailIcon from "@mui/icons-material/Email"
+import { useNavigate } from "react-router-dom"; 
 
 const Footer = () => {
   const logo = "/assets/images/logo/salinlahi_logo_1.png"
 
+  const navigate = useNavigate();
+
+  const handleLogoClick = () => {
+    navigate("/");
+  };
+
+  
   return (
     <div className="footer-container">
       <div className="footer-inner">
         <div className="footer-columns">
 
           <div className="footer-column">
-            <img src={logo} alt="Salinlahi Logo" className="footer-logo" />
-            <h2 className="logo-name">Salinlahi</h2>
+            <div className="logo-and-title-footer" onClick={handleLogoClick}>
+              <img src={logo} alt="Salinlahi Logo" className="footer-logo" />
+              <h2 className="logo-name">Salinlahi</h2>
+            </div>
           </div>
 
           <div className="footer-column">
@@ -28,11 +38,25 @@ const Footer = () => {
           </div>
 
           <div className="footer-column">
-            <h3>Download Our App</h3>
-            <p className="download-text">
+          <h3>
+            <a
+              href="https://salinlahi-baybayin.com/Salinlahi.apk"
+              download
+              style={{ textDecoration: 'none', color: 'inherit', cursor: 'pointer' }}
+            >
+              Download Our App
+            </a>
+          </h3>
+          <p className="download-text">
+            <a
+              href="https://salinlahi-baybayin.com/Salinlahi.apk"
+              download
+              style={{ textDecoration: 'none', color: 'inherit', cursor: 'pointer' }}
+            >
               Download the Salinlahi app to explore more.
-            </p>
-          </div>
+            </a>
+          </p>
+        </div>
 
           <div className="footer-column">
             <h3>Follow Us</h3>

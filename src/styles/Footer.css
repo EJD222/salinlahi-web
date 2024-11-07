@@ -13,6 +13,13 @@
   width: 100%;
 }
 
+.logo-and-title-footer {
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+}
+
 .footer-columns {
   display: flex;
   justify-content: space-between;
