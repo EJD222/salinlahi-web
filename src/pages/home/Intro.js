@@ -18,8 +18,11 @@ function Intro() {
                 <b> Download the Salinlahi App now </b>and start your journey in
                 preserving and learning this ancient script of the Philippines!
               </p>
-              <button className="download-button">
-                <GetAppIcon style={{ marginRight: "5px" }} />{" "}
+              <button
+                className="download-button"
+                onClick={() => window.location.href = "https://salinlahi-baybayin.com/Salinlahi.apk"}
+              >
+                <GetAppIcon style={{ marginRight: "5px" }} />
                 Download the Salinlahi App
               </button>
             </div>

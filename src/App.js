@@ -21,7 +21,7 @@ import { LessonProvider } from "./pages/baybayinTools/baybayinGuide/Lessons/Less
 import Footer from "./components/Footer"
 
 import AnoNgaBaAngBaybayin from "./pages/baybayinTools/baybayinGuide/Lessons/Category1/AnoNgaBaAngBaybayin"
-import AnoNgaBaAngAbugida from "./pages/baybayinTools/baybayinGuide/Lessons/Category1/AnoNgaBaAngAbugida"
+import AnoNgaBaAngAlibata from "./pages/baybayinTools/baybayinGuide/Lessons/Category1/AnoNgaBaAngAlibata"
 import PanutuntunanNgBaybayin from "./pages/baybayinTools/baybayinGuide/Lessons/Category1/PanutuntunanNgBaybayin"
 import UnangBakas from "./pages/baybayinTools/baybayinGuide/Lessons/Category2/UnangBakas"
 import IkalawangBakas from "./pages/baybayinTools/baybayinGuide/Lessons/Category2/IkalawangBakas"
@@ -71,7 +71,7 @@ function AppRoutes() {
       "/baybayin-tools/baybayin-characters",
       "/baybayin-tools/baybayin-transliterator",
       "/baybayin-tools/baybayin-guide/1/ano-nga-ba-ang-baybayin",
-      "/baybayin-tools/baybayin-guide/1/ano-nga-ba-ang-abugida",
+      "/baybayin-tools/baybayin-guide/1/ano-nga-ba-ang-alibata",
       "/baybayin-tools/baybayin-guide/1/panutuntunan-ng-baybayin",
       "/baybayin-tools/baybayin-guide/2/unang-bakas",
       "/baybayin-tools/baybayin-guide/2/ikalawang-bakas",
@@ -143,10 +143,10 @@ function AppRoutes() {
         }
       />
       <Route
-        path="/baybayin-tools/baybayin-guide/1/ano-nga-ba-ang-abugida"
+        path="/baybayin-tools/baybayin-guide/1/ano-nga-ba-ang-alibata"
         element={
           <LessonProvider>
-            <AnoNgaBaAngAbugida />
+            <AnoNgaBaAngAlibata />
           </LessonProvider>
         }
       />
