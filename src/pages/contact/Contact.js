@@ -1,51 +1,84 @@
-import React, { useRef, useState } from "react"
-import "../../styles/contact/Contact.css"
-import LocalPhoneIcon from "@mui/icons-material/LocalPhone"
-import EmailIcon from "@mui/icons-material/Email"
-import RoomIcon from "@mui/icons-material/Room"
-import FacebookIcon from "@mui/icons-material/Facebook"
-import emailjs from "@emailjs/browser"
+import React, { useRef, useState } from "react";
+import "../../styles/contact/Contact.css";
+import LocalPhoneIcon from "@mui/icons-material/LocalPhone";
+import EmailIcon from "@mui/icons-material/Email";
+import RoomIcon from "@mui/icons-material/Room";
+import FacebookIcon from "@mui/icons-material/Facebook";
+import emailjs from "@emailjs/browser";
+import DOMPurify from "dompurify";
+import ReCAPTCHA from "react-google-recaptcha";
 
 const Contact = () => {
-  const form = useRef()
-  const [messageStatus, setMessageStatus] = useState("")
+  const form = useRef();
+  const recaptchaRef = useRef();
+  const [messageStatus, setMessageStatus] = useState("");
 
-  const sendEmail = (e) => {
-    e.preventDefault()
+  const sendEmail = async (e) => {
+    e.preventDefault();
 
-    emailjs
-      .sendForm(
-        "service_f18g0bk",
-        "template_3syerkt",
-        form.current,
-        "SVWO5SHc7BEHyAQK1",
-      )
-      .then(
-        () => {
-          setMessageStatus("Message sent successfully!")
-          form.current.reset() 
-          setTimeout(() => setMessageStatus(""), 10000)
-        },
-        (error) => {
-          setMessageStatus("Message failed to send. Please try again.") 
-          console.error("Message failed...", error.text)
-          setTimeout(() => setMessageStatus(""), 10000)
-        },
-      )
-  }
+    try {
+      const token = await recaptchaRef.current.executeAsync();
+      recaptchaRef.current.reset();
+  
+      console.log("reCAPTCHA Token:", token);
+  
+      if (!token) {
+        setMessageStatus("Please complete CAPTCHA verification.");
+        return;
+      }
+
+      e.target.username.value = DOMPurify.sanitize(e.target.username.value);
+      e.target.email.value = DOMPurify.sanitize(e.target.email.value);
+      e.target.subject.value = DOMPurify.sanitize(e.target.subject.value);
+      e.target.message.value = DOMPurify.sanitize(e.target.message.value);
+
+      emailjs
+        .send(
+          "service_f18g0bk",
+          "template_3syerkt",
+          {
+            username: e.target.username.value,
+            email: e.target.email.value,
+            subject: e.target.subject.value,
+            message: e.target.message.value,
+            "g-recaptcha-response": token,
+          },
+          "SVWO5SHc7BEHyAQK1"
+        )
+        .then(
+          () => {
+            setMessageStatus("Message sent successfully!");
+            form.current.reset();
+            setTimeout(() => setMessageStatus(""), 10000);
+          },
+          (error) => {
+            setMessageStatus("Message failed to send. Please try again.");
+            console.error("Message failed...", error.text);
+            setTimeout(() => setMessageStatus(""), 10000);
+          }
+        );
+    } catch (error) {
+      setMessageStatus("An error occurred during form submission.");
+      console.error("Error:", error);
+    }
+  };
 
   return (
     <div className="contact-us-form-container">
       <div className="contact-container">
-
         <div className="contact-form">
           <h2 className="contact-title">Get in Touch</h2>
           <p className="contact-description">
             Thank you for reaching out to us! We're thrilled to hear from you.
-            Please feel free to share any questions, feedback, or concerns you
-            may have.
+            Please feel free to share any questions, feedback, or concerns you may have.
           </p>
           <form ref={form} onSubmit={sendEmail}>
+            <ReCAPTCHA
+              ref={recaptchaRef}
+              sitekey="6Lcp9HcqAAAAACEuXlUyPAtE2KMrGJDy-rBJiFhV"
+              size="invisible"
+            />
+
             <div className="form-row">
               <div className="form-group">
                 <label htmlFor="name">Name*</label>
@@ -62,18 +95,13 @@ const Contact = () => {
             </div>
             <div className="form-group">
               <label htmlFor="message">Message*</label>
-              <textarea
-                id="message"
-                rows="5"
-                name="message"
-                required
-              ></textarea>
+              <textarea id="message" rows="5" name="message" required></textarea>
             </div>
             <button type="submit" className="submit-button">
               Submit
             </button>
           </form>
-          {messageStatus && <p className="message-status">{messageStatus}</p>}{" "}
+          {messageStatus && <p className="message-status">{messageStatus}</p>}
         </div>
 
         <div className="contact-details">
@@ -104,7 +132,7 @@ const Contact = () => {
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Contact
+export default Contact;

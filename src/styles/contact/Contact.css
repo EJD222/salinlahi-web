@@ -82,7 +82,7 @@
 .contact-details {
   flex: 1;
   background-color: #000000;
-  padding: 20px;
+  padding: 5px 20px;
   border-radius: 5px;
   word-wrap: break-word;
 }
@@ -144,6 +144,7 @@
   .contact-details {
     width: 100%;
     margin-right: 0;
+    padding: 20px;
   }
 
   .form-row {
