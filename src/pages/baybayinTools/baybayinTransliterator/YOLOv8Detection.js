@@ -85,6 +85,8 @@ const YOLOv8Detection = () => {
   const fileInputRef = useRef(null)
   const [cameraError, setCameraError] = useState(false)
   const [cameraLoading, setCameraLoading] = useState(false)
+  const [detecting, setDetecting] = useState(false);
+  const [noDetections, setNoDetections] = useState(false);
 
   const handleCameraReady = () => {
     setCameraLoading(false)
@@ -103,48 +105,61 @@ const YOLOv8Detection = () => {
   const handleTabChange = (event, newValue) => {
     setTabIndex(newValue)
     clearCanvas()
-    setError(null)  
+    setError(null)
   }
 
   const handleImageUpload = async (event) => {
     const file = event.target.files[0];
     if (!file) return;
-
+  
     if (!file.type.startsWith("image/")) {
       setError("Invalid file type. Please upload an image.");
+      setNoDetections(false);
       return;
     }
-
+  
     clearCanvas();
     setError(null);
-    setFileLoading(true); // Start file loading
-
+    setFileLoading(true);
+    setDetecting(true);
+    console.log("Overlay should be visible now");
+    setNoDetections(false);
+  
+    console.log("Starting image processing...");
+  
     try {
       const img = new Image();
       img.src = URL.createObjectURL(file);
-
+  
       img.onload = async () => {
         setOriginalImg(img);
-
+  
         const { inputTensor, scaleFactor, offsetX, offsetY } = preprocessImage(img);
         const output = await runModel(inputTensor);
-
+  
         drawDetections(output, img, scaleFactor, offsetX, offsetY);
+        
+        // Moved to the end of image processing
+        console.log("Image processing completed.");
+        console.log("Overlay should be hidden now");
+        setDetecting(false);
+        setFileLoading(false);
       };
     } catch (err) {
       setError(`Error: ${err.message}`);
       console.error("Error during detection:", err);
-    } finally {
-      setFileLoading(false); // End file loading
     }
-  }
+  };
 
   const captureImage = async () => {
     const webcam = webcamRef.current;
     if (!webcam) return;
 
     clearCanvas();
-    setCameraLoading(true); // Start camera loading
+    setCameraLoading(true);
+    setDetecting(true);
+
+    console.log("Starting camera image processing...");
 
     try {
       const imageSrc = webcam.getScreenshot();
@@ -163,129 +178,146 @@ const YOLOv8Detection = () => {
       setError("Error: Could not process the camera image.");
       console.error("Error during camera capture:", err);
     } finally {
-      setCameraLoading(false); // End camera loading
+      setTimeout(() => {
+        setCameraLoading(false);
+        setDetecting(false);
+        console.log("Overlay should be hidden now"); // Debug statement
+      }, 2000); // 2-second delay
     }
-  }
+  };
 
   const clearCanvas = () => {
     const canvas = canvasRef.current;
     const ctx = canvas.getContext("2d");
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     setOriginalImg(null);
-  }
+  };
 
   const preprocessImage = (img) => {
-    const canvas = document.createElement("canvas")
-    const ctx = canvas.getContext("2d")
-    canvas.width = 640
-    canvas.height = 640
+    const canvas = document.createElement("canvas");
+    const ctx = canvas.getContext("2d");
+    canvas.width = 640;
+    canvas.height = 640;
 
-    const scaleFactor = Math.min(640 / img.width, 640 / img.height)
-    const resizedWidth = img.width * scaleFactor
-    const resizedHeight = img.height * scaleFactor
-    const offsetX = (640 - resizedWidth) / 2
-    const offsetY = (640 - resizedHeight) / 2
+    const scaleFactor = Math.min(640 / img.width, 640 / img.height);
+    const resizedWidth = img.width * scaleFactor;
+    const resizedHeight = img.height * scaleFactor;
+    const offsetX = (640 - resizedWidth) / 2;
+    const offsetY = (640 - resizedHeight) / 2;
 
-    ctx.fillStyle = "black"
-    ctx.fillRect(0, 0, 640, 640)
-    ctx.drawImage(img, offsetX, offsetY, resizedWidth, resizedHeight)
+    ctx.fillStyle = "black";
+    ctx.fillRect(0, 0, 640, 640);
+    ctx.drawImage(img, offsetX, offsetY, resizedWidth, resizedHeight);
 
-    const imgData = ctx.getImageData(0, 0, 640, 640)
-    const { data } = imgData
+    const imgData = ctx.getImageData(0, 0, 640, 640);
+    const { data } = imgData;
 
-    const floatData = new Float32Array(3 * 640 * 640)
+    const floatData = new Float32Array(3 * 640 * 640);
     for (let i = 0, j = 0; i < data.length; i += 4, j++) {
-      floatData[j] = data[i] / 255
-      floatData[j + 640 * 640] = data[i + 1] / 255
-      floatData[j + 2 * 640 * 640] = data[i + 2] / 255
+      floatData[j] = data[i] / 255;
+      floatData[j + 640 * 640] = data[i + 1] / 255;
+      floatData[j + 2 * 640 * 640] = data[i + 2] / 255;
     }
 
-    const inputTensor = new ort.Tensor("float32", floatData, [1, 3, 640, 640])
-    return { inputTensor, scaleFactor, offsetX, offsetY }
-  }
+    const inputTensor = new ort.Tensor("float32", floatData, [1, 3, 640, 640]);
+    return { inputTensor, scaleFactor, offsetX, offsetY };
+  };
 
   const runModel = async (inputTensor) => {
-    const modelPath = "/assets/models/best.onnx"
+    const modelPath = "/assets/models/best.onnx";
 
     try {
       const session = await ort.InferenceSession.create(modelPath, {
         executionProviders: ["wasm"],
-      })
+      });
 
-      const feeds = { images: inputTensor }
-      const results = await session.run(feeds)
-      return results["output0"].data
+      const feeds = { images: inputTensor };
+      const results = await session.run(feeds);
+      return results["output0"].data;
     } catch (err) {
-      throw new Error(`Failed to load or run the model: ${err.message}`)
+      throw new Error("Failed to load or run the model: ${err.message}");
     }
-  }
+  };
 
   const drawDetections = (output, img, scaleFactor, offsetX, offsetY) => {
-    if (!img) return
-
-    const canvas = canvasRef.current
-    const ctx = canvas.getContext("2d")
-
-    const containerWidth = 640
-    const containerHeight = 640
-    const imgAspectRatio = img.width / img.height
-
-    let displayWidth, displayHeight
+    if (!img) return;
+  
+    const canvas = canvasRef.current;
+    const ctx = canvas.getContext("2d");
+  
+    const containerWidth = 640;
+    const containerHeight = 640;
+    const imgAspectRatio = img.width / img.height;
+  
+    let displayWidth, displayHeight;
     if (imgAspectRatio > 1) {
-      displayWidth = containerWidth
-      displayHeight = containerWidth / imgAspectRatio
+      displayWidth = containerWidth;
+      displayHeight = containerWidth / imgAspectRatio;
     } else {
-      displayWidth = containerHeight * imgAspectRatio
-      displayHeight = containerHeight
+      displayWidth = containerHeight * imgAspectRatio;
+      displayHeight = containerHeight;
     }
-
-    const xScale = displayWidth / (img.width * scaleFactor)
-    const yScale = displayHeight / (img.height * scaleFactor)
-
-    canvas.width = containerWidth
-    canvas.height = containerHeight
-
-    const xOffset = (containerWidth - displayWidth) / 2
-    const yOffset = (containerHeight - displayHeight) / 2
-
-    ctx.clearRect(0, 0, containerWidth, containerHeight)
-    ctx.drawImage(img, xOffset, yOffset, displayWidth, displayHeight)
-
-    const numBoxes = 8400
-    const numClasses = customLabels.length
-
-    ctx.strokeStyle = "#FCC900"
-    ctx.lineWidth = 2
-    ctx.font = "16px Inter"
-
+  
+    const xScale = displayWidth / (img.width * scaleFactor);
+    const yScale = displayHeight / (img.height * scaleFactor);
+  
+    canvas.width = containerWidth;
+    canvas.height = containerHeight;
+  
+    const xOffset = (containerWidth - displayWidth) / 2;
+    const yOffset = (containerHeight - displayHeight) / 2;
+  
+    ctx.clearRect(0, 0, containerWidth, containerHeight);
+    ctx.drawImage(img, xOffset, yOffset, displayWidth, displayHeight);
+  
+    const numBoxes = 8400;
+    const numClasses = customLabels.length;
+  
+    let detectionsFound = false;
+  
+    ctx.strokeStyle = "#FCC900";
+    ctx.lineWidth = 2;
+    ctx.font = "16px Inter";
+  
     for (let i = 0; i < numBoxes; i++) {
       const [classId, score] = [...Array(numClasses).keys()]
         .map((col) => [col, output[numBoxes * (col + 4) + i]])
-        .reduce((max, curr) => (curr[1] > max[1] ? curr : max), [0, 0])
-
+        .reduce((max, curr) => (curr[1] > max[1] ? curr : max), [0, 0]);
+  
       if (score > 0.5) {
-        const xc = output[i]
-        const yc = output[numBoxes + i]
-        const w = output[2 * numBoxes + i]
-        const h = output[3 * numBoxes + i]
-
-        const x1 = (xc - w / 2 - offsetX) * xScale + xOffset
-        const y1 = (yc - h / 2 - offsetY) * yScale + yOffset
-        const boxWidth = w * xScale
-        const boxHeight = h * yScale
-
-        ctx.strokeRect(x1, y1, boxWidth, boxHeight)
-
-        //const label = `${customLabels[classId]} (${(score * 100).toFixed(1)}%)`;
-        const label = `${customLabels[classId]}`
-        ctx.fillStyle = "#000000" 
-        ctx.fillRect(x1, y1 - 20, ctx.measureText(label).width + 8, 20) 
-        ctx.fillStyle = "#FFFFFF"
-        ctx.fillText(label, x1 + 4, y1 - 5) 
+        const xc = output[i];
+        const yc = output[numBoxes + i];
+        const w = output[2 * numBoxes + i];
+        const h = output[3 * numBoxes + i];
+  
+        const x1 = (xc - w / 2 - offsetX) * xScale + xOffset;
+        const y1 = (yc - h / 2 - offsetY) * yScale + yOffset;
+        const boxWidth = w * xScale;
+        const boxHeight = h * yScale;
+  
+        ctx.strokeRect(x1, y1, boxWidth, boxHeight);
+  
+        const label = `${customLabels[classId]}`;
+        ctx.fillStyle = "#000000";
+        ctx.fillRect(x1, y1 - 20, ctx.measureText(label).width + 8, 20);
+        ctx.fillStyle = "#FFFFFF";
+        ctx.fillText(label, x1 + 4, y1 - 5);
+  
+        detectionsFound = true;
       }
     }
-  }
-
+  
+    // Set detecting to false after rendering bounding boxes
+    if (detectionsFound) {
+      console.log("Bounding boxes detected, setting detecting to false.");
+      setDetecting(false);
+    } else {
+      console.log("No detections found, setting detecting to false.");
+      setDetecting(false);
+      setNoDetections(true);
+    }
+  };
+  
   return (
     <div className="yolov8-container">
       <h2>Transliterate Baybayin Script to Latin Script</h2>
@@ -305,6 +337,13 @@ const YOLOv8Detection = () => {
           <Tab label="Camera" className="custom-tab" />
         </Tabs>
       </div>
+
+      {(fileLoading || detecting) && (
+        <div className="overlay">
+          <CircularProgress style={{ color: "#FCC900" }} />
+          <p>Processing image...</p>
+        </div>
+      )}
 
       <div
         className="detection-container"
@@ -338,7 +377,7 @@ const YOLOv8Detection = () => {
                       width={640}
                       height={640}
                       className="video-feed"
-                      onUserMedia={handleCameraReady} 
+                      onUserMedia={handleCameraReady}
                       onUserMediaError={handleCameraError}
                     />
                     <IconButton
@@ -360,12 +399,6 @@ const YOLOv8Detection = () => {
 
         <div>
           <div className="image-container">
-            {loading && (
-              <div className="loading-overlay">
-                <CircularProgress style={{ color: "#FCC900" }} />
-              </div>
-            )}
-            
             {originalImg ? (
               <img
                 src={originalImg.src}
@@ -392,7 +425,7 @@ const YOLOv8Detection = () => {
                 )}
               </div>
             )}
-            
+
             <canvas ref={canvasRef} className="overlay-canvas" />
           </div>
 
@@ -404,12 +437,13 @@ const YOLOv8Detection = () => {
         </div>
       </div>
 
-      {loading && <CircularProgress className="circular-progress" />}
       {error && <p className="error-text">{error}</p>}
+      {noDetections && !detecting && (
+        <p className="no-detections-message">No detections found.</p>
+      )}
 
       {tabIndex === 0 && (
         <div className="upload-section">
-
           <input
             accept="image/*"
             id="file-upload"
@@ -418,7 +452,6 @@ const YOLOv8Detection = () => {
             onChange={handleImageUpload}
             style={{ display: "none" }}
           />
-
           <label htmlFor="file-upload" style={{ cursor: "pointer" }}>
             <button
               type="button"
@@ -432,7 +465,7 @@ const YOLOv8Detection = () => {
         </div>
       )}
     </div>
-  )
-}
+  );
+};
 
-export default YOLOv8Detection
+export default YOLOv8Detection;
