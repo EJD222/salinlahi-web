@@ -54,7 +54,6 @@ const About = () => {
         </div>
       </div>
 
-      {/* Team Section */}
       <div className="team-section">
         <h2 className="team-header">TEAM AWANGGAN </h2>
         <div className="team-members">

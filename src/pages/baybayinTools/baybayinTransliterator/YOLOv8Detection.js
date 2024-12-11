@@ -74,7 +74,6 @@ const customLabels = [
 ]
 
 const YOLOv8Detection = () => {
-  const [loading, setLoading] = useState(false)
   const [fileLoading, setFileLoading] = useState(false); 
   const [error, setError] = useState(null)
   const [originalImg, setOriginalImg] = useState(null)
@@ -86,8 +85,9 @@ const YOLOv8Detection = () => {
   const [cameraError, setCameraError] = useState(false)
   const [cameraLoading, setCameraLoading] = useState(false)
   const [detecting, setDetecting] = useState(false);
-  const [noDetections, setNoDetections] = useState(false);
-
+  const [noDetectionsFile, setNoDetectionsFile] = useState(false);
+  const [noDetectionsCamera, setNoDetectionsCamera] = useState(false);
+  
   const handleCameraReady = () => {
     setCameraLoading(false)
   }
@@ -99,14 +99,16 @@ const YOLOv8Detection = () => {
   }
 
   const handleButtonClick = () => {
-    fileInputRef.current.click()
-  }
+    fileInputRef.current.click();
+  };
 
   const handleTabChange = (event, newValue) => {
-    setTabIndex(newValue)
-    clearCanvas()
-    setError(null)
-  }
+    setTabIndex(newValue);
+    clearCanvas();
+    setError(null);
+    setNoDetectionsFile(false);
+    setNoDetectionsCamera(false);
+  };
 
   const handleImageUpload = async (event) => {
     const file = event.target.files[0];
@@ -114,7 +116,7 @@ const YOLOv8Detection = () => {
   
     if (!file.type.startsWith("image/")) {
       setError("Invalid file type. Please upload an image.");
-      setNoDetections(false);
+      setNoDetectionsFile(false);
       return;
     }
   
@@ -123,7 +125,7 @@ const YOLOv8Detection = () => {
     setFileLoading(true);
     setDetecting(true);
     console.log("Overlay should be visible now");
-    setNoDetections(false);
+    setNoDetectionsFile(false);
   
     console.log("Starting image processing...");
   
@@ -139,7 +141,6 @@ const YOLOv8Detection = () => {
   
         drawDetections(output, img, scaleFactor, offsetX, offsetY);
         
-        // Moved to the end of image processing
         console.log("Image processing completed.");
         console.log("Overlay should be hidden now");
         setDetecting(false);
@@ -149,43 +150,42 @@ const YOLOv8Detection = () => {
       setError(`Error: ${err.message}`);
       console.error("Error during detection:", err);
     }
-  };
+  };  
 
   const captureImage = async () => {
     const webcam = webcamRef.current;
     if (!webcam) return;
-
+  
     clearCanvas();
-    setCameraLoading(true);
     setDetecting(true);
-
+    setNoDetectionsCamera(false);
+  
     console.log("Starting camera image processing...");
-
+  
     try {
       const imageSrc = webcam.getScreenshot();
       const img = new Image();
       img.src = imageSrc;
-
+  
       img.onload = async () => {
         setOriginalImg(img);
-
+  
         const { inputTensor, scaleFactor, offsetX, offsetY } = preprocessImage(img);
         const output = await runModel(inputTensor);
-
+  
         drawDetections(output, img, scaleFactor, offsetX, offsetY);
       };
     } catch (err) {
       setError("Error: Could not process the camera image.");
       console.error("Error during camera capture:", err);
     } finally {
-      setTimeout(() => {
-        setCameraLoading(false);
-        setDetecting(false);
-        console.log("Overlay should be hidden now"); // Debug statement
-      }, 2000); // 2-second delay
+  
+      setCameraLoading(false);
+      setDetecting(false);
+      console.log("Overlay should be hidden now");
     }
   };
-
+    
   const clearCanvas = () => {
     const canvas = canvasRef.current;
     const ctx = canvas.getContext("2d");
@@ -235,7 +235,7 @@ const YOLOv8Detection = () => {
       const results = await session.run(feeds);
       return results["output0"].data;
     } catch (err) {
-      throw new Error("Failed to load or run the model: ${err.message}");
+      throw new Error(`Failed to load or run the model: ${err.message}`);
     }
   };
 
@@ -307,16 +307,19 @@ const YOLOv8Detection = () => {
       }
     }
   
-    // Set detecting to false after rendering bounding boxes
     if (detectionsFound) {
       console.log("Bounding boxes detected, setting detecting to false.");
       setDetecting(false);
     } else {
       console.log("No detections found, setting detecting to false.");
       setDetecting(false);
-      setNoDetections(true);
+      if (tabIndex === 0) {
+        setNoDetectionsFile(true);
+      } else {
+        setNoDetectionsCamera(true);
+      }
     }
-  };
+  };  
   
   return (
     <div className="yolov8-container">
@@ -333,17 +336,10 @@ const YOLOv8Detection = () => {
           centered
           className="custom-tabs"
         >
-          <Tab label="File" className="custom-tab" />
+          <Tab label="Image" className="custom-tab" />
           <Tab label="Camera" className="custom-tab" />
         </Tabs>
       </div>
-
-      {(fileLoading || detecting) && (
-        <div className="overlay">
-          <CircularProgress style={{ color: "#FCC900" }} />
-          <p>Processing image...</p>
-        </div>
-      )}
 
       <div
         className="detection-container"
@@ -399,6 +395,12 @@ const YOLOv8Detection = () => {
 
         <div>
           <div className="image-container">
+          {(fileLoading || detecting) && (
+              <div className="overlay">
+                <CircularProgress style={{ color: "#FCC900" }} />
+                <p>Processing image...</p>
+              </div>
+            )}
             {originalImg ? (
               <img
                 src={originalImg.src}
@@ -438,8 +440,12 @@ const YOLOv8Detection = () => {
       </div>
 
       {error && <p className="error-text">{error}</p>}
-      {noDetections && !detecting && (
-        <p className="no-detections-message">No detections found.</p>
+      {tabIndex === 0 && noDetectionsFile && !detecting && (
+        <p className="no-detections-message">No detections found for the uploaded image.</p>
+      )}
+
+      {tabIndex === 1 && noDetectionsCamera && !detecting && (
+        <p className="no-detections-message">No detections found for the camera image.</p>
       )}
 
       {tabIndex === 0 && (
